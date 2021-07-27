@@ -1,0 +1,12 @@
+datasources:
+  - name: shinyproxy
+    type: influxdb
+    access: proxy
+    url: http://influxdb:8086
+    database: shinyproxy_usagestats
+
+  - name: telegraf         
+    type: influxdb
+    access: proxy
+    url: http://influxdb:8086
+    database: telegraf
