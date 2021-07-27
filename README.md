@@ -1,7 +1,9 @@
 # nmorais apps
 
-This project uses docker-compose for running multiple Docker containers and
-shinyproxy to run multiple containers from Docker images of shiny apps.
+This project uses:
+- `docker-compose` to run multiple Docker containers
+- `shinyproxy` to run multiple containers from Docker images of shiny apps
+- The **TIG (Telegraf, InfluxDB, Grafana)** stack to log usage data
 
 ## Run and stop
 
