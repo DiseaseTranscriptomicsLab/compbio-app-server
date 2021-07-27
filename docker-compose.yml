@@ -1,6 +1,7 @@
 version: "3"
 services:
   shinyproxy:
+    container_name: shinyproxy
     build: ./shinyproxy
     restart: on-failure
     networks:
@@ -11,6 +12,56 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./shinyproxy-logs/server:/log
       - ./shinyproxy-logs/container:/container-logs
+
+  grafana:
+    image: grafana/grafana:8.0.6
+    container_name: grafana
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - shiny-net
+    volumes:
+      - ./grafana-volume:/vol01/Docker/monitoring
+      - ./grafana-data:/var/lib/grafana
+
+  influxdb:
+    image: influxdb:1.8.6
+    container_name: influxdb
+    restart: always
+    ports:
+      - 8086:8086
+    networks:
+      - shiny-net
+    volumes:
+      - ./influxdb-data:/var/lib/influxdb
+      - ./influxdb-volume:/vol01/Docker/monitoring
+    environment:
+      - INFLUXDB_DB=shinyproxy_usagestats
+      - INFLUXDB_USER=shinyproxy_usagestats
+
+  telegraf:
+    image: telegraf:1.19.1
+    container_name: telegraf
+    restart: always
+    ports:
+      - 8125:8125
+    networks:
+      - shiny-net
+    depends_on:
+      - "influxdb"
+    links:
+      - "influxdb"
+    environment:
+      HOST_PROC: /rootfs/proc
+      HOST_SYS: /rootfs/sys
+      HOST_ETC: /rootfs/etc
+    volumes:
+      - ./telegraf/etc/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /sys:/rootfs/sys:ro
+      - /proc:/rootfs/proc:ro
+      - /etc:/rootfs/etc:ro
 
 networks:
   shiny-net:

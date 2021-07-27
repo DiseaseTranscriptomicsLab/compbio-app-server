@@ -4,6 +4,7 @@ proxy:
   hide-navbar: false
   template-path: ./template
   container-log-path: /container-logs
+  usage-stats-url: http://influxdb:8086/write?db=shinyproxy_usagestats
   docker:
     internal-networking: true
     container-network: shiny-net
