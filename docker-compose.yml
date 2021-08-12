@@ -10,20 +10,21 @@ services:
       - 8080:8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./shinyproxy-logs/server:/log
-      - ./shinyproxy-logs/container:/container-logs
+      - ./shinyproxy/logs/server:/log
+      - ./shinyproxy/logs/container:/container-logs
 
   grafana:
     image: grafana/grafana:8.0.6
     container_name: grafana
     restart: always
+    user: root
     ports:
       - 3000:3000
     networks:
       - shiny-net
     volumes:
-      - ./grafana-volume:/vol01/Docker/monitoring
-      - ./grafana-data:/var/lib/grafana
+      - ./grafana/volume:/vol01/Docker/monitoring
+      - ./grafana/data:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning
 
   influxdb:
@@ -35,8 +36,8 @@ services:
     networks:
       - shiny-net
     volumes:
-      - ./influxdb-data:/var/lib/influxdb
-      - ./influxdb-volume:/vol01/Docker/monitoring
+      - ./influxdb/data:/var/lib/influxdb
+      - ./influxdb/volume:/vol01/Docker/monitoring
     environment:
       - INFLUXDB_DB=shinyproxy_usagestats
       - INFLUXDB_USER=shinyproxy_usagestats
