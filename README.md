@@ -25,16 +25,12 @@ This project uses:
 
 ## Run and stop
 
-To setup this service, go to the project folder and run:
+Go to the project folder and run:
 
-```bash
-# build Docker images and run services in detached mode
-docker-compose up -d --build
-```
-
-To stop the service, run `docker-compose down`.
-
-More commands available in `docker-compose -h`.
+- `docker-compose up -d --build` to build the local Docker images,
+download the remote images and start the service.
+- `docker-compose down` to stop the service.
+- `docker-compose -h` for documentation.
 
 ## Sources of inspiration
 
