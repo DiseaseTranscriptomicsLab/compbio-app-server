@@ -1,4 +1,4 @@
-# nmorais apps
+# nmorais app server
 
 This project uses:
 - [Docker Compose][] to run multiple Docker containers
