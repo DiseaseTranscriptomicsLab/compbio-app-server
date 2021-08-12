@@ -9,7 +9,7 @@ This project uses:
 
 To setup this service, go to the project folder and run:
 
-```
+```bash
 docker-compose build              # build Docker images
 docker-compose up -d shinyproxy   # run shinyproxy in detached mode
 ```
