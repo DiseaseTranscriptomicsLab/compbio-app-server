@@ -10,3 +10,9 @@ datasources:
     access: proxy
     url: http://influxdb:8086
     database: telegraf
+
+  - name: DS_PROMETHEUS
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    database: prometheus
