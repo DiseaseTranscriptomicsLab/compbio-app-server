@@ -1,5 +1,18 @@
 version: "3"
 services:
+  nginx:
+    image: nginx:1.21
+    container_name: nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - shinyproxy
+      - flower
+      - grafana
+
   # shinyproxy + related services
   shinyproxy:
     container_name: shinyproxy
@@ -25,6 +38,9 @@ services:
       - ./grafana/volume:/vol01/Docker/monitoring
       - ./grafana/data:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning
+    environment:
+      - GF_SERVER_ROOT_URL=http://localhost:3000/grafana/
+      - GF_SERVER_SERVE_FROM_SUB_PATH=true
 
   influxdb:
     image: influxdb:1.8.6
@@ -88,7 +104,7 @@ services:
   flower:
     container_name: flower
     image: mher/flower
-    command: celery -A tasks flower
+    command: celery -A tasks flower --url_prefix=flower
     volumes:
       - ./celery:/celery
     working_dir: /celery
