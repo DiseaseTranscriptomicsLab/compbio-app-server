@@ -1,8 +1,8 @@
 # nmorais app server
 
 This project uses:
-- [Docker Compose][] to run multiple Docker containers
-- [Shinyproxy][] to run multiple containers from Docker images of shiny apps
+- [Docker Compose][] to manage multiple Docker containers
+- [ShinyProxy][] to run Shiny apps via Docker
   - The **TIG ([Telegraf][], [InfluxDB][], [Grafana][])** stack to log
   shinyproxy usage data
 - [Celery][] to run background tasks via a job queue system
@@ -13,7 +13,7 @@ This project uses:
 - [RStudio Server][] to test code on-the-fly
 
 [Docker Compose]: https://docs.docker.com/compose/
-[Shinyproxy]: https://shinyproxy.io
+[ShinyProxy]: https://shinyproxy.io
 [InfluxDB]: https://www.influxdata.com
 [Telegraf]: https://www.influxdata.com/time-series-platform/telegraf/
 [Grafana]: https://grafana.com
