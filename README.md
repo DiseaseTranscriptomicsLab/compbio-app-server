@@ -29,7 +29,7 @@ This project uses:
 Go to the project folder and run:
 
 1. `./shinyproxy/download-shinyproxy-dockers.sh` to download Docker images
-to be run via ShinyProxy
+to be run via ShinyProxy.
 2. `docker-compose up -d --build` to build the local Docker images,
 download the remote images and start the service.
 
