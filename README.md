@@ -3,7 +3,8 @@
 This project uses:
 - [Docker Compose][] to run multiple Docker containers
 - [Shinyproxy][] to run multiple containers from Docker images of shiny apps
-  - The **TIG ([Telegraf][], [InfluxDB][], [Grafana][])** stack to log shinyproxy usage data
+  - The **TIG ([Telegraf][], [InfluxDB][], [Grafana][])** stack to log
+  shinyproxy usage data
 - [Celery][] to run background tasks via a job queue system
   - [Flower][] to monitor Celery and to send jobs to Celery via its REST API
   - [Redis][] to serve as message broker for celery
@@ -27,6 +28,8 @@ This project uses:
 
 Go to the project folder and run:
 
+- `./shinyproxy/download-shinyproxy-dockers.sh` to download Docker images
+to be run via ShinyProxy
 - `docker-compose up -d --build` to build the local Docker images,
 download the remote images and start the service.
 - `docker-compose down` to stop the service.
