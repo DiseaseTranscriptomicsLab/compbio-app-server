@@ -40,11 +40,11 @@ Other relevant commands:
 - `docker-compose down` to stop the service.
 - `docker-compose -h` for documentation.
 
-## SSL certificates renewal
+## SSL certificate renewal
 
-SSL certificates are maintained via [Nginx][] to provide encrypted HTTPS
-traffic. SSL certificates expire and need to be renewed after some time
-(e.g. one year). After replacing the SSL certificates:
+SSL certificates are maintained via [Nginx][] for encrypted HTTPS traffic.
+These certificates need to be renewed frequently (e.g. every year). To do
+so, after replacing the SSL certificate files:
 
 1. In case the filename of the SSL certificate changes, open the file
 [nginx/nginx.conf](nginx/nginx.conf) and replace the path to the
