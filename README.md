@@ -48,7 +48,7 @@ traffic. SSL certificates expire and need to be renewed after some time
 
 1. In case the filename of the SSL certificate changes, open the file
 [nginx/nginx.conf](nginx/nginx.conf) and replace the path to the
-certificates (commands named `ssl_certificate` and `ssl_certificate_key`)
+certificates (in `ssl_certificate` and `ssl_certificate_key`)
 
 2. Manually restart Nginx with the command `docker-compose restart nginx`
 
