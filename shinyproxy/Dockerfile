@@ -4,7 +4,6 @@ FROM openjdk:8-jre
 RUN mkdir -p /opt/shinyproxy/
 WORKDIR /opt/shinyproxy/
 
-COPY application.yml .
 COPY --from=shinyproxy /opt/shinyproxy/shinyproxy.jar .
 
 CMD ["java", "-jar", "/opt/shinyproxy/shinyproxy.jar"]

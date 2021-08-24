@@ -23,6 +23,7 @@ services:
       - 8080:8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./shinyproxy/application.yml:/opt/shinyproxy/application.yml
       - ./shinyproxy/logs/server:/log
       - ./shinyproxy/logs/container:/container-logs
 
