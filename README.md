@@ -7,8 +7,7 @@ This project uses:
 - [Nginx][] as a reverse proxy (i.e. to redirect URLs), to serve SSL
 certificates and to show a public folder
 - [ShinyProxy][] to run R/Shiny and Python apps via Docker
-  - The **TIG ([Telegraf][], [InfluxDB][], [Grafana][])** stack to log
-  ShinyProxy usage data
+  - [Prometheus][] and [Grafana][] to log and visualise ShinyProxy usage data
 - [Celery][] to run background tasks via a job queue system
   - [Flower][] to monitor Celery and to send jobs to Celery via its REST API
   - [Redis][] to serve as message broker for celery
@@ -18,8 +17,6 @@ certificates and to show a public folder
 
 [Docker Compose]: https://docs.docker.com/compose/
 [ShinyProxy]: https://shinyproxy.io
-[InfluxDB]: https://www.influxdata.com
-[Telegraf]: https://www.influxdata.com/time-series-platform/telegraf/
 [Grafana]: https://grafana.com
 [Celery]: https://docs.celeryproject.org/
 [Flower]: https://flower.readthedocs.io/en/latest/
