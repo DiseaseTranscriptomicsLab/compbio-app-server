@@ -9,6 +9,7 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - /etc/ssl/imm:/etc/nginx/certs
+      - ./public:/public:ro
     depends_on:
       - shinyproxy
       - flower
