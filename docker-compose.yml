@@ -15,16 +15,17 @@ services:
       - flower
       - grafana
 
-  # shinyproxy + related services
   shinyproxy:
     container_name: shinyproxy
     build: ./shinyproxy
     restart: on-failure
     ports:
       - 8080:8080
+      - 9091:9090
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./shinyproxy/application.yml:/opt/shinyproxy/application.yml
+      - ./shinyproxy/templates:/opt/shinyproxy/templates
       - ./shinyproxy/logs/server:/log
       - ./shinyproxy/logs/container:/container-logs
 
@@ -44,42 +45,11 @@ services:
     environment:
       - GF_SERVER_ROOT_URL=http://localhost:3000/grafana/
       - GF_SERVER_SERVE_FROM_SUB_PATH=true
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_NAME=Main Org.
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
+      - GF_AUTH_ANONYMOUS_HIDE_VERSION=true
 
-  influxdb:
-    image: influxdb:1.8.6
-    container_name: influxdb
-    restart: always
-    ports:
-      - 8086:8086
-    volumes:
-      - ./influxdb/data:/var/lib/influxdb
-      - ./influxdb/volume:/vol01/Docker/monitoring
-    environment:
-      - INFLUXDB_DB=shinyproxy_usagestats
-      - INFLUXDB_USER=shinyproxy_usagestats
-
-  telegraf:
-    image: telegraf:1.19.1
-    container_name: telegraf
-    restart: always
-    ports:
-      - 8125:8125
-    depends_on:
-      - "influxdb"
-    links:
-      - "influxdb"
-    environment:
-      HOST_PROC: /rootfs/proc
-      HOST_SYS: /rootfs/sys
-      HOST_ETC: /rootfs/etc
-    volumes:
-      - ./telegraf/etc/telegraf.conf:/etc/telegraf/telegraf.conf:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /sys:/rootfs/sys:ro
-      - /proc:/rootfs/proc:ro
-      - /etc:/rootfs/etc:ro
-
-  # celery + flower + related services
   redis:
     container_name: redis
     image: redis:alpine
@@ -136,7 +106,7 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=test_db
     ports:
-      - "3306:3306"
+      - 3306:3306
 
 networks:
   default:

@@ -4,5 +4,11 @@ global:
 
 scrape_configs:
   - job_name: flower
+    metrics_path: '/flower/metrics'
     static_configs:
       - targets: ['flower:5555']
+  - job_name: 'shinyproxy'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      # ShinyProxy Actuator @ 9090
+      - targets: ['shinyproxy:9090'] 

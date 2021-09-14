@@ -5,7 +5,7 @@ proxy:
   template-path: ./templates/modified_navbar
   container-wait-time: 300000
   container-log-path: /container-logs
-  usage-stats-url: http://influxdb:8086/write?db=shinyproxy_usagestats
+  usage-stats-url: micrometer
   docker:
     internal-networking: true
     container-network: shiny-net
@@ -27,6 +27,12 @@ proxy:
 logging:
   file:
     /log/shinyproxy.log
+
+management:
+  metrics:
+    export:
+      prometheus:
+        enabled: true
 
 server:
   secureCookies: true
