@@ -1,4 +1,4 @@
-# nmorais app server
+# CompBio app server
 
 This project uses:
 - [Docker Compose][] to manage multiple Docker containers
