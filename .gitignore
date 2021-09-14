@@ -3,3 +3,4 @@ shinyproxy-logs
 */data/
 */logs/
 public/*
+shinyproxy/shiny-apps

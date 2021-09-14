@@ -1,14 +1,12 @@
 proxy:
-  title: nmorais
+  title: NMorais Lab - Bioinformatic Apps
   port: 8080
-  #bind-address: 127.0.0.1
   hide-navbar: false
-  template-path: ./template
+  template-path: ./templates/modified_navbar
   container-wait-time: 300000
   container-log-path: /container-logs
   usage-stats-url: http://influxdb:8086/write?db=shinyproxy_usagestats
   docker:
-    #container-protocol: https
     internal-networking: true
     container-network: shiny-net
   specs:
@@ -16,7 +14,7 @@ proxy:
     container-image: nunoagostinho/psichomics:dev
     container-cmd: ["R", "-e", "psichomics::psichomics(host='0.0.0.0', port=3838, shinyproxy=TRUE)"]
     container-network: "${proxy.docker.container-network}"
-    container-volumes: [ "/home/nuno/Downloads:/root/Downloads" ]
+    container-volumes: [ "/srv/apps/psichomics/data:/root/Downloads" ]
   - id: voyAGEr
     container-image: arthurschneider/voyager
     container-network: "${proxy.docker.container-network}"
@@ -24,13 +22,15 @@ proxy:
   - id: scStudio_LiMM
     container-image: martabica/scstudio_limm
     container-network: "${proxy.docker.container-network}"
-    container-volumes: [ "/home/FM/nunoagostinho/nmorais-app-server/shinyproxy/scStudio_LiMM/datasets:/home/app/datasets" ]
+    container-volumes: [ "/srv/apps/scStudio_LiMM/datasets:/home/app/datasets" ]
 
 logging:
   file:
     /log/shinyproxy.log
 
 server:
+  secureCookies: true
   forward-headers-strategy: native
+  frameOptions: sameorigin
   servlet:
     context-path:  /
