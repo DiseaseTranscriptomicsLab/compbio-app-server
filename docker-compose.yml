@@ -7,8 +7,8 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - /etc/ssl/imm:/etc/nginx/certs
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /etc/ssl/imm:/etc/nginx/certs:ro
       - ./public:/public:ro
     depends_on:
       - shinyproxy
@@ -24,10 +24,10 @@ services:
       - 9091:9090
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./shinyproxy/application.yml:/opt/shinyproxy/application.yml
-      - ./shinyproxy/templates:/opt/shinyproxy/templates
-      - ./shinyproxy/logs/server:/log
-      - ./shinyproxy/logs/container:/container-logs
+      - ./shinyproxy/application.yml:/opt/shinyproxy/application.yml:ro
+      - ./shinyproxy/templates:/opt/shinyproxy/templates:ro
+      - shinyproxy-server:/log
+      - shinyproxy-containers:/container-logs
 
   grafana:
     image: grafana/grafana:8.0.6
@@ -39,9 +39,8 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./grafana/volume:/vol01/Docker/monitoring
-      - ./grafana/data:/var/lib/grafana
-      - ./grafana/provisioning:/etc/grafana/provisioning
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
     environment:
       - GF_SERVER_ROOT_URL=http://localhost:3000/grafana/
       - GF_SERVER_SERVE_FROM_SUB_PATH=true
@@ -60,7 +59,8 @@ services:
     container_name: prometheus
     image: prom/prometheus
     volumes:
-      - ./prometheus:/etc/prometheus
+      - ./prometheus:/etc/prometheus:ro
+      - prometheus-data:/prometheus
     ports:
       - 9090:9090
 
@@ -69,7 +69,7 @@ services:
     build: ./celery
     command: celery -A tasks worker -l info -E
     volumes:
-      - ./celery:/celery
+      - ./celery:/celery:ro
       - ./celery/data:/data
     depends_on:
       - redis
@@ -79,7 +79,7 @@ services:
     image: mher/flower
     command: celery -A tasks flower --url_prefix=flower
     volumes:
-      - ./celery:/celery
+      - ./celery:/celery:ro
     working_dir: /celery
     ports:
       - 5555:5555
@@ -111,3 +111,9 @@ services:
 networks:
   default:
       name: shiny-net
+
+volumes:
+  prometheus-data:
+  grafana-data:
+  shinyproxy-server:
+  shinyproxy-containers:

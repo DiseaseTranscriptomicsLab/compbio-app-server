@@ -1,6 +1,3 @@
-shinyproxy-logs
 .DS_Store
-*/data/
-*/logs/
 public/*
 shinyproxy/shiny-apps
