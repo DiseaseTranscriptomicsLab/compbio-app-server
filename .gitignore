@@ -2,3 +2,4 @@ shinyproxy-logs
 .DS_Store
 */data/
 */logs/
+public/*
