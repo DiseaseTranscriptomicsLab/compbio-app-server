@@ -6,9 +6,9 @@ This project uses:
 - [Docker Compose][] to manage multiple Docker containers
 - [Nginx][] as a reverse proxy (i.e. to redirect URLs), to serve SSL
 certificates and to show a public folder
-- [ShinyProxy][] to run Shiny apps via Docker
+- [ShinyProxy][] to run R/Shiny and Python apps via Docker
   - The **TIG ([Telegraf][], [InfluxDB][], [Grafana][])** stack to log
-  shinyproxy usage data
+  ShinyProxy usage data
 - [Celery][] to run background tasks via a job queue system
   - [Flower][] to monitor Celery and to send jobs to Celery via its REST API
   - [Redis][] to serve as message broker for celery
@@ -54,7 +54,7 @@ Files and directories in the [public](public) folder will be downloadable from
 the `/public` path of the website, e.g.:
 https://compbio.imm.medicina.ulisboa.pt/public.
 
-This configuration can be found in [nginx.conf](nginx/nginx.conf).
+This configuration can be found in [nginx/nginx.conf](nginx/nginx.conf).
 
 ## SSL certificate renewal
 
