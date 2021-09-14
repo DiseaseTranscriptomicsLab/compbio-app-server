@@ -29,41 +29,46 @@ certificates and to show a public folder
 [RStudio Server]: https://www.rstudio.com/products/rstudio/
 [Nginx]: https://nginx.org
 
-## Run and stop the server
+## Useful commands
 
 Go to the project folder and run:
 
-1. `./shinyproxy/download-shinyproxy-dockers.sh` to automatically pull Docker
-images used in ShinyProxy.
+1. [`./shinyproxy/download-shinyproxy-dockers.sh`][downloadDockers] to
+automatically pull Docker images used in ShinyProxy.
 2. `docker-compose up -d --build` to build local Docker images, download the
 remote images and start the server.
 
+[downloadDockers]: shinyproxy/download-shinyproxy-dockers.sh
+
 Other relevant commands:
 
-- `docker-compose down` to stop the service.
-- `docker-compose restart shinyproxy` to restart a specific service (in this
-case, `shinyproxy`); useful after changing the configuration of a single service
-and to avoid restarting the whole server.
-- `docker-compose logs nginx` to get the logs of a specific service (in this
-case, `nginx`).
-- `docker-compose -h` for documentation.
+Command               | Description                     
+--------------------- | --------------------------------
+`docker-compose down` | Stop the server and all services
+`docker-compose restart shinyproxy` | Restart a specific service (in this case, `shinyproxy`); useful after changing the configuration of a single service and to avoid restarting the whole server
+`docker-compose logs nginx` | Print logs of a specific service (in this case, `nginx`)
+`docker-compose -h` | Show further documentation
 
-## Public folder
+## Relevant assets
 
-Files and directories in the [public](public) folder will be downloadable from
-the `/public` path of the website, e.g.:
-https://compbio.imm.medicina.ulisboa.pt/public.
+Asset                                                      | Description
+---------------------------------------------------------- | --------------------------------------------------------------------
+[`docker-compose.yml`](docker-compose.yml)                 | Docker Compose configuration
+[`nginx/nginx.conf`](nginx/nginx.conf)                     | Nginx configuration
+[`shinyproxy/application.yml`](shinyproxy/application.yml) | ShinyProxy configuration (including Shiny apps to run)
+[`celery/tasks.py`](celery/tasks.py)                       | Celery tasks
+[`public`](public)                                         | Publicly available files/folders downloadable at [`/public`][public]
 
-This configuration can be found in [nginx/nginx.conf](nginx/nginx.conf).
+[public]: https://compbio.imm.medicina.ulisboa.pt/public
 
-## SSL certificate renewal
+### SSL certificate renewal
 
 SSL certificates are maintained via [Nginx][] for encrypted HTTPS traffic. These
 certificates need to be renewed frequently (e.g. every year). To do so, after
 replacing the SSL certificate files:
 
 1. In case the filename of the SSL certificate changes, open the file
-[nginx/nginx.conf](nginx/nginx.conf) and replace the path to the certificates
+[`nginx/nginx.conf`](nginx/nginx.conf) and replace the path to the certificates
 (in `ssl_certificate` and `ssl_certificate_key`)
 
 2. Manually restart Nginx with the command `docker-compose restart nginx`
