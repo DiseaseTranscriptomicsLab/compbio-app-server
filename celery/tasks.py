@@ -1,7 +1,8 @@
-import os, subprocess, time
+import os, time
 from datetime import datetime
+from subprocess import run, PIPE
 
-# celery configuration
+# Celery configuration
 from celery import Celery
 os.environ.setdefault('C_FORCE_ROOT', 'true')
 app = Celery("tasks",
@@ -9,28 +10,23 @@ app = Celery("tasks",
              backend=os.environ.get('CELERY_RESULT_BACKEND', 'redis://redis'))
 app.conf.CELERY_WORKER_SEND_TASK_EVENTS = True
 
-def createDir(dir):
-    os.mkdir(dir)
-    os.chdir(dir)
+def execR(cmd):
+    # Runs command and returns output (unless an error is raised)
+    return run(cmd, check=True, stdout=PIPE, text=True).stdout
 
-def rmEmptyDir(dir):
-    if len( os.listdir(dir) ) == 0:
-        os.rmdir(dir)
+# Regarding running R expressions:
+#   - Use 'cat(2+2)' to capture R output as a Celery result
+#   - If the command raises an error, the task's state will be FAILURE
 
-@app.task(bind=True)
-def R(self, cmd):
-    # Use task ID to create new folder to save task data
-    taskID = self.request.id
-    createDir(taskID)
+@app.task
+def R(cmd):
+    # Run R expression
+    return execR(["Rscript", "-e", cmd])
 
-    # Run R process
-    cmd = "R -e '" + cmd + "'"
-    subprocess.run(cmd, shell=True)
-
-    # Go back from folder and remove task folder if empty
-    os.chdir("..")
-    rmEmptyDir(taskID)
-    return "hello"
+@app.task
+def Rscript(cmd):
+    # Run Rscript
+    return execR(["Rscript", cmd])
 
 if __name__ == "__main__":
     app.start()
