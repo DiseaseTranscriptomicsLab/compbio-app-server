@@ -2,8 +2,8 @@ proxy:
   title: NMorais Lab - Bioinformatic Apps
   port: 8080
   hide-navbar: false
-  template-path: ./templates/modified_navbar
-  container-wait-time: 300000
+  template-path: /opt/shinyproxy/templates
+  container-wait-time: 30000
   container-log-path: /container-logs
   usage-stats-url: micrometer
   docker:
@@ -11,16 +11,17 @@ proxy:
     container-network: shiny-net
   specs:
   - id: psichomics
+    description: Alternative splicing quantification, visualisation and analysis
     container-image: nunoagostinho/psichomics:dev
     container-cmd: ["R", "-e", "psichomics::psichomics(host='0.0.0.0', port=3838, shinyproxy=TRUE)"]
     container-network: "${proxy.docker.container-network}"
     container-volumes: [ "/srv/apps/psichomics/data:/root/Downloads" ]
   - id: voyAGEr
+    description: Analysis of age-related gene expression changes in human
     container-image: arthurschneider/voyager
     container-network: "${proxy.docker.container-network}"
-    container-cmd: ["R", "-e", "shiny::runApp(host='0.0.0.0', port=3838)"]
   - id: scStudio_LiMM
-    container-image: martabica/scstudio_limm
+    container-image: genomeptimm/scstudio:1.1
     container-network: "${proxy.docker.container-network}"
     container-volumes: [ "/srv/apps/scStudio_LiMM/datasets:/home/app/datasets" ]
 
