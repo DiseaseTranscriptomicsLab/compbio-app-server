@@ -26,7 +26,7 @@ certificates and to show a public folder
 [RStudio Server]: https://www.rstudio.com/products/rstudio/
 [Nginx]: https://nginx.org
 
-## Useful commands
+## Set up the app server
 
 Go to the project folder and run:
 
@@ -37,7 +37,7 @@ remote images and start the server.
 
 [downloadDockers]: shinyproxy/download-shinyproxy-dockers.sh
 
-Other relevant commands:
+### Other relevant commands
 
 Command                             | Description                     
 ----------------------------------- | --------------------------------
