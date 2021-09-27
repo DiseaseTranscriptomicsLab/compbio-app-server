@@ -53,6 +53,7 @@ Asset                                                      | Description
 [`docker-compose.yml`](docker-compose.yml)                 | Docker Compose configuration
 [`nginx/nginx.conf`](nginx/nginx.conf)                     | Nginx configuration
 [`shinyproxy/application.yml`](shinyproxy/application.yml) | ShinyProxy configuration (including Shiny apps to run)
+[`shinyproxy/templates`](shinyproxy/templates)             | ShinyProxy HTML theme
 [`celery/tasks.py`](celery/tasks.py)                       | Celery tasks
 [`public`](public)                                         | Publicly available files/folders downloadable at [`/public`][public]
 
