@@ -104,14 +104,15 @@ This is expected until ShinyProxy starts running again.
 ### SSL certificate renewal
 
 SSL certificates are maintained via [Nginx][] for encrypted HTTPS traffic. These
-certificates need to be renewed frequently (e.g. every year). To do so, after
-replacing the SSL certificate files:
+certificates need to be renewed frequently (e.g. every year). To do so:
 
-1. In case the filename of the SSL certificate changes, open the file
+1. Update the SSL certificate files
+
+2. In case the filename of the SSL certificate changes, open the file
 [`nginx/nginx.conf`](nginx/nginx.conf) and replace the path to the certificates
 (in `ssl_certificate` and `ssl_certificate_key`)
 
-2. Manually restart Nginx with the command `docker-compose restart nginx`
+3. Manually restart Nginx with the command `docker-compose restart nginx`
 
 ## Sources of inspiration
 
