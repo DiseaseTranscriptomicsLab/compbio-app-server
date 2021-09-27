@@ -6,6 +6,7 @@ services:
     ports:
       - 80:80
       - 443:443
+      - 8081:8080
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - /etc/ssl/imm:/etc/nginx/certs:ro
@@ -64,13 +65,13 @@ services:
     ports:
       - 9090:9090
 
-  celery:
-    container_name: celery
+  celery-ctrap:
+    container_name: celery-ctrap
     build: ./celery
-    command: celery -A tasks worker -l info -E
+    command: celery -A tasks worker -l info -E -n ctrap
     volumes:
       - ./celery:/celery:ro
-      - ./celery/data:/data
+      - ../apps/cTRAP/sessions:/data
     depends_on:
       - redis
 
@@ -87,7 +88,7 @@ services:
       CELERY_BROKER_URL: redis://redis
       CELERY_RESULT_BACKEND: redis://redis
     depends_on:
-      - celery
+      - celery-ctrap
       - redis
 
   rstudio-server:

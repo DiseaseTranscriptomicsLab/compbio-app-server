@@ -24,6 +24,12 @@ proxy:
     container-image: genomeptimm/scstudio:1.1
     container-network: "${proxy.docker.container-network}"
     container-volumes: [ "/srv/apps/scStudio_LiMM/datasets:/home/app/datasets" ]
+  - id: cTRAP
+    description: Identifying candidate causal perturbations from differential gene expression data
+    container-image: nunoagostinho/ctrap:dev
+    container-network: "${proxy.docker.container-network}"
+    container-cmd: ["R", "-e", "cTRAP::cTRAP(host='0.0.0.0', port=3838)"]
+    container-volumes: [ "/srv/apps/cTRAP/sessions:/data" ]
 
 logging:
   file:
