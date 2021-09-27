@@ -39,12 +39,12 @@ remote images and start the server.
 
 Other relevant commands:
 
-Command               | Description                     
---------------------- | --------------------------------
-`docker-compose down` | Stop the server and all services
+Command                             | Description                     
+----------------------------------- | --------------------------------
+`docker-compose down`               | Stop the server and all services
 `docker-compose restart shinyproxy` | Restart a specific service (in this case, `shinyproxy`); useful after changing the configuration of a single service and to avoid restarting the whole server
-`docker-compose logs nginx` | Print logs of a specific service (in this case, `nginx`)
-`docker-compose -h` | Show further documentation
+`docker-compose logs nginx`         | Print logs of a specific service (in this case, `nginx`)
+`docker-compose -h`                 | Show further documentation
 
 ## Relevant assets
 
@@ -58,6 +58,48 @@ Asset                                                      | Description
 [`public`](public)                                         | Publicly available files/folders downloadable at [`/public`][public]
 
 [public]: https://compbio.imm.medicina.ulisboa.pt/public
+
+### Adding new apps to ShinyProxy
+
+[ShinyProxy][] deploys Shiny and Python apps via Docker images. Put simply,
+you will need to:
+
+#### 1. [Create a Docker image of your app][deploying]
+
+I suggest uploading your Docker image to DockerHub and then pull it from
+the app server, e.g.:
+
+```
+docker pull nunoagostinho/psichomics:latest
+```
+
+[Deploying]: https://shinyproxy.io/documentation/deploying-apps/
+
+#### 2. Configure ShinyProxy in [`shinyproxy/application.yml`](shinyproxy/application.yml)
+
+Include a block of text related to your app at the end of the file, for
+instance:
+
+```yml
+  - id: psichomics
+    description: Alternative splicing quantification, visualisation and analysis
+    container-image: nunoagostinho/psichomics:dev
+    container-cmd: ["R", "-e", "psichomics::psichomics(host='0.0.0.0', port=3838, shinyproxy=TRUE)"]
+    container-network: "${proxy.docker.container-network}"
+    container-volumes: [ "/srv/apps/psichomics/data:/root/Downloads" ]
+```
+
+You can edit any field you want with the exception of
+`container-network: "${proxy.docker.container-network}"`: this is required for
+ShinyProxy to communicate with the Docker image inside Docker Compose.
+
+More details on app configuration for ShinyProxy are available at
+https://shinyproxy.io/documentation/configuration/#apps
+
+#### 3. Restart ShinyProxy using `docker-compose restart shinyproxy`
+
+While restarting ShinyProxy, the website will show you simply **502: Bad Gateway**.
+This is expected until ShinyProxy starts running again.
 
 ### SSL certificate renewal
 
