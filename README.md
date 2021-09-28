@@ -84,7 +84,7 @@ instance:
   - id: psichomics
     description: Alternative splicing quantification, visualisation and analysis
     container-image: nunoagostinho/psichomics:dev
-    container-cmd: ["R", "-e", "psichomics::psichomics(host='0.0.0.0', port=3838, shinyproxy=TRUE)"]
+    container-cmd: ["R", "-e", "psichomics::psichomics(host='0.0.0.0', port=3838)"]
     container-network: "${proxy.docker.container-network}"
     container-volumes: [ "/srv/apps/psichomics/data:/root/Downloads" ]
 ```
@@ -92,9 +92,9 @@ instance:
 You can edit any field you want with the exception of
 `container-network: "${proxy.docker.container-network}"`: this is required for
 ShinyProxy to communicate with the Docker image inside Docker Compose.
+[Read more details on app configuration for ShinyProxy.][app-config]
 
-More details on app configuration for ShinyProxy are available at
-https://shinyproxy.io/documentation/configuration/#apps
+[app-config]: https://shinyproxy.io/documentation/configuration/#apps
 
 #### 3. Restart ShinyProxy using `docker-compose restart shinyproxy`
 
