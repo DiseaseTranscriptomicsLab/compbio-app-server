@@ -19,10 +19,5 @@ h1 {
     margin: auto;
 }
 
-.progress-bar {
-    transition: width 5s ease-in-out;
-}
-
-.progress-psichomics {
-    transition: width 20s ease-in-out;
-}
+.progress-bar { transition: width 5s ease-in-out; }
+.progress-psichomics { transition: width 20s ease-in-out; }
