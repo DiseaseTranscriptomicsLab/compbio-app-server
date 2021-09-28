@@ -18,7 +18,7 @@ docker pull nunoagostinho/psichomics:latest
 
 [deploying]: https://shinyproxy.io/documentation/deploying-apps/
 
-### 2. Configure ShinyProxy in [`shinyproxy/application.yml`][application.yml]
+### 2. Configure ShinyProxy in [`application.yml`][application.yml]
 
 Include a block of text related to your app at the end of the file, for
 instance:
@@ -50,15 +50,15 @@ ShinyProxy, run:
 docker-compose restart shinyproxy
 ```
 
-[application.yml]: shinyproxy/application.yml
+[application.yml]: application.yml
 [app-config]: https://shinyproxy.io/documentation/configuration/#apps
 
 ### 3. Slow down the progress bar when opening an app (optional)
 
 When loading apps, a progress bar is displayed that fills in 5 seconds. If your
 app takes more time to start, you should customise the time taken to fill the
-bar. To do so, open [shinyproxy/templates/assets/shinyproxy.css][shinyproxy.css]
-and add the following line to the end of the file:
+bar. To do so, open [`templates/assets/shinyproxy.css`][shinyproxy.css] and add
+the following line to the end of the file:
 
 ```css
 .progress-psichomics { transition: width 20s ease-in-out; }
@@ -70,7 +70,7 @@ the desired amount of seconds.
 After saving the file, the change will be automatically applied next time you
 open your app in the server.
 
-[shinyproxy.css]: shinyproxy/templates/assets/shinyproxy.css
+[shinyproxy.css]: templates/assets/shinyproxy.css
 
 ### 4. Redirect from an URL location via Nginx (optional)
 
@@ -81,7 +81,7 @@ All apps in ShinyProxy are served via an intermediary path:
 
 If you want an app to be available directly from `/appID`, the easiest way is to
 redirect from `/appID` to `/app/appID` using a [307 Temporary Redirect][307]
-status code. To do so, open [nginx/location_apps.conf][location_apps.conf]
+status code. To do so, open [../nginx/location_apps.conf][location_apps.conf]
 and add the following command at the end of the file:
 
 ```nginx
@@ -95,12 +95,11 @@ docker-compose restart nginx
 ```
 
 [307]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/307
-[location_apps.conf]: nginx/location_apps.conf
+[location_apps.conf]: ../nginx/location_apps.conf
 
 ## Update apps in ShinyProxy
 
 1. Pull the latest Docker image available to the app server
-2. Modify the `container-image` in
-[`shinyproxy/application.yml`][application.yml] to include the latest version of
-the Docker image (if applicable)
+2. Modify the `container-image` in [`application.yml`][application.yml] to
+include the latest version of the Docker image (if applicable)
 3. Restart ShinyProxy: `docker-compose restart shinyproxy`
