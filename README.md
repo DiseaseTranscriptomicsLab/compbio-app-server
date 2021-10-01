@@ -11,8 +11,10 @@ certificates and to show a public folder
   - [Flower][] to monitor Celery and to send jobs to Celery via its REST API
   - [Redis][] to serve as message broker for celery
 - [Prometheus][] and [Grafana][] to log and visualise ShinyProxy and Celery data
-- [MySQL][] as the database server
 - [RStudio Server][] to test code on-the-fly
+- [Plausible][] for (multiple) website analytics
+  - [Postgres][] database for Plausible's user data
+  - [Clickhouse][] database for Plausible's analytics
 
 [Docker Compose]: https://docs.docker.com/compose/
 [ShinyProxy]: https://shinyproxy.io
@@ -21,11 +23,13 @@ certificates and to show a public folder
 [Flower]: https://flower.readthedocs.io/en/latest/
 [Redis]: https://redis.io
 [Prometheus]: https://prometheus.io
-[MySQL]: https://www.mysql.com
 [RStudio Server]: https://www.rstudio.com/products/rstudio/
 [Nginx]: https://nginx.org
+[Plausible]: https://plausible.io
+[Postgres]: https://www.postgresql.org
+[Clickhouse]: https://clickhouse.com
 
-## Set up the app server
+## Start running the app server
 
 Go to the project folder and run:
 
@@ -33,6 +37,9 @@ Go to the project folder and run:
 automatically pull Docker images used in ShinyProxy
 2. `docker-compose up -d --build` to build local Docker images, download the
 remote images and start the server
+
+The app server should now be available. Note that some services may take some
+time to wake up, but everything should be running after ~30 seconds.
 
 [downloadDockers]: shinyproxy/download-shinyproxy-dockers.sh
 
@@ -45,6 +52,12 @@ to avoid restarting the whole server
 - `docker-compose logs nginx`: print logs of a specific service (in this case,
 `nginx`)
 - `docker-compose -h`: show further documentation
+
+### Next steps
+
+- [Add and update apps in ShinyProxy](shinyproxy)
+- [Monitor website analytics](plausible)
+- [Renew SSL certificates](nginx)
 
 ## Relevant assets
 
@@ -60,11 +73,6 @@ Asset                                           | Description
 [application.yml]: shinyproxy/application.yml
 [nginx.conf]: nginx/nginx.conf
 [public]: https://compbio.imm.medicina.ulisboa.pt/public
-
-## Next steps
-
-- [Add and update apps in ShinyProxy](shinyproxy)
-- [SSL certificate renewal](nginx)
 
 ## Sources of inspiration
 
