@@ -81,7 +81,7 @@ All apps in ShinyProxy are served via an intermediary path:
 
 If you want an app to be available directly from `/appID`, the easiest way is to
 redirect from `/appID` to `/app/appID` using a [307 Temporary Redirect][307]
-status code. To do so, open [../nginx/location_apps.conf][location_apps.conf]
+status code. To do so, open [`../nginx/location_apps.conf`][location_apps.conf]
 and add the following command at the end of the file:
 
 ```nginx
