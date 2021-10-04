@@ -20,6 +20,7 @@ proxy:
     description: Analysis of age-related gene expression changes in human
     container-image: arthurschneider/voyager
     container-network: "${proxy.docker.container-network}"
+    container-volumes: [ "/srv/apps/voyager/data:/home/app/data" ]
   - id: scStudio_LiMM
     container-image: genomeptimm/scstudio:1.1
     container-network: "${proxy.docker.container-network}"
@@ -28,7 +29,7 @@ proxy:
     description: Identifying candidate causal perturbations from differential gene expression data
     container-image: nunoagostinho/ctrap:dev
     container-network: "${proxy.docker.container-network}"
-    container-cmd: ["R", "-e", "cTRAP::cTRAP(host='0.0.0.0', port=3838)"]
+    container-cmd: ["R", "-e", "cTRAP::cTRAP(host='0.0.0.0', port=3838, flowerURL='http://flower:5555/flower')"]
     container-volumes: [ "/srv/apps/cTRAP/sessions:/data" ]
 
 logging:
