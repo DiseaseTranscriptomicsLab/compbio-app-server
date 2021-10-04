@@ -1,11 +1,11 @@
-# CompBio App Server - ShinyProxy configuration
+# ShinyProxy
 
-## Add new apps to ShinyProxy
-
-[ShinyProxy][] deploys Shiny and Python apps via Docker images. Put simply, you
-will need to:
+[ShinyProxy][] is open-source and allows to deploy R/Shiny and Python apps via
+Docker images.
 
 [ShinyProxy]: https://shinyproxy.io
+
+## Add new apps to ShinyProxy
 
 ### 1. [Create a Docker image of your app][deploying]
 

@@ -10,7 +10,7 @@ services:
     volumes:
       - ./nginx:/etc/nginx
       - /etc/ssl/imm:/etc/nginx/certs:ro
-      - ./public:/public:ro
+      - ./nginx/public:/public:ro
     depends_on:
       - shinyproxy
       - flower
@@ -52,14 +52,14 @@ services:
       - GF_AUTH_ANONYMOUS_HIDE_VERSION=true
 
   redis:
+    image: redis:6-alpine
     container_name: redis
-    image: redis:alpine
     ports:
       - 6379:6379
 
   prometheus:
-    container_name: prometheus
     image: prom/prometheus
+    container_name: prometheus
     volumes:
       - ./prometheus:/etc/prometheus:ro
       - prometheus-data:/prometheus

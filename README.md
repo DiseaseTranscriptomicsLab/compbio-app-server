@@ -5,16 +5,16 @@ Visit our website at https://compbio.imm.medicina.ulisboa.pt!
 This project uses:
 - [Docker Compose][] to manage multiple Docker containers
 - [Nginx][] as a reverse proxy (i.e. to redirect URLs), to serve SSL
-certificates and to show a public folder
+certificates and to show a [public](nginx/public) folder
 - [ShinyProxy][] to run R/Shiny and Python apps via Docker
 - [Celery][] to run background tasks via a job queue system
   - [Flower][] to monitor Celery and to send jobs to Celery via its REST API
   - [Redis][] to serve as message broker for celery
 - [Prometheus][] and [Grafana][] to log and visualise ShinyProxy and Celery data
 - [RStudio Server][] to test code on-the-fly
-- [Plausible][] for (multiple) website analytics
-  - [Postgres][] database for Plausible's user data
-  - [Clickhouse][] database for Plausible's analytics
+- [Plausible][] analytics to gather traffic metrics of multiple websites
+  - [Postgres][] database (Plausible's user data)
+  - [Clickhouse][] database (Plausible's analytics)
 
 [Docker Compose]: https://docs.docker.com/compose/
 [ShinyProxy]: https://shinyproxy.io
@@ -56,8 +56,8 @@ to avoid restarting the whole server
 ### Next steps
 
 - [Add and update apps in ShinyProxy](shinyproxy)
-- [Monitor website analytics](plausible)
-- [Renew SSL certificates](nginx)
+- [Monitor website analytics with Plausible](plausible)
+- [Renew SSL certificates in Nginx](nginx)
 
 ## Relevant assets
 
@@ -68,7 +68,7 @@ Asset                                           | Description
 [`shinyproxy/application.yml`][application.yml] | ShinyProxy configuration (including Shiny apps)
 [`shinyproxy/templates`](shinyproxy/templates)  | ShinyProxy custom HTML files
 [`celery/tasks.py`](celery/tasks.py)            | Celery tasks
-[`public`](public)                              | Publicly available data downloadable at [`/public`][public]
+[`public`](nginx/public)                        | Publicly available data downloadable at [`/public`][public]
 
 [application.yml]: shinyproxy/application.yml
 [nginx.conf]: nginx/nginx.conf
