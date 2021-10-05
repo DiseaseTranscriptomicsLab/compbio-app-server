@@ -9,7 +9,7 @@ services:
       - 8081:8080
     volumes:
       - ./nginx:/etc/nginx
-      - /etc/ssl/imm:/etc/nginx/certs:ro
+      - /etc/ssl/imm:/certs:ro
       - ./nginx/public:/public:ro
     depends_on:
       - shinyproxy

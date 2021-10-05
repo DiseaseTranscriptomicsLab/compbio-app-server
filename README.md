@@ -57,7 +57,7 @@ to avoid restarting the whole server
 
 - [Add and update apps in ShinyProxy](shinyproxy)
 - [Monitor website analytics with Plausible](plausible)
-- [Renew SSL certificates in Nginx](nginx)
+- [Renew SSL certificates and other Nginx configurations](nginx)
 
 ## Relevant assets
 
