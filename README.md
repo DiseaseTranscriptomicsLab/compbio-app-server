@@ -41,6 +41,9 @@ remote images and start the server
 The app server should now be available. Note that some services may take some
 time to wake up, but everything should be running after ~30 seconds.
 
+Some services are only available in the `dev` profile (such as RStudio). To
+run this profile, type: `docker-compose --profile dev up -d --build`
+
 [downloadDockers]: shinyproxy/download-shinyproxy-dockers.sh
 
 ### Other relevant commands

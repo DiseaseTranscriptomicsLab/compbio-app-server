@@ -1,7 +1,7 @@
 version: "3"
 services:
   nginx:
-    image: nginx:1.21
+    image: nginx
     container_name: nginx
     ports:
       - 80:80
@@ -54,6 +54,8 @@ services:
   redis:
     image: redis:6-alpine
     container_name: redis
+    sysctls:
+      - net.core.somaxconn=65535
     ports:
       - 6379:6379
 
@@ -100,6 +102,8 @@ services:
       - 8787:8787
     environment:
       - PASSWORD=hello
+    profiles:
+      - dev
 
   postgres:
     container_name: postgres
