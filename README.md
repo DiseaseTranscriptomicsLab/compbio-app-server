@@ -29,9 +29,9 @@ certificates and to show a [public](nginx/public) folder
 [Postgres]: https://www.postgresql.org
 [Clickhouse]: https://clickhouse.com
 
-## Start running the app server
+## Instructions
 
-Go to the project folder and run:
+To start running the app server, go to the project folder and run:
 
 1. [`./shinyproxy/download-shinyproxy-dockers.sh`][downloadDockers] to
 automatically pull Docker images used in ShinyProxy
@@ -46,9 +46,11 @@ run this profile, type: `docker-compose --profile dev up -d --build`
 
 [downloadDockers]: shinyproxy/download-shinyproxy-dockers.sh
 
-### Other relevant commands
+### Essential Docker Compose commands
 
-- `docker-compose down`: stop the server and all services
+- `docker-compose up -d --build`: build Docker images and run the server in
+detached mode
+- `docker-compose down`: stop the server and all its services
 - `docker-compose restart shinyproxy`: restart a specific service (in this case,
 `shinyproxy`); useful after changing the configuration of a single service and
 to avoid restarting the whole server
@@ -62,7 +64,7 @@ to avoid restarting the whole server
 - [Monitor website analytics with Plausible](plausible)
 - [Renew SSL certificates and other Nginx configurations](nginx)
 
-## Relevant assets
+### Relevant assets
 
 Asset                                           | Description
 ----------------------------------------------- | --------------------------------------------------------------------
