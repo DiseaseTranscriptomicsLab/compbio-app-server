@@ -69,7 +69,7 @@ services:
   celery-ctrap:
     container_name: celery-ctrap
     build: ./celery
-    command: celery -A tasks worker -l info -E -n ctrap
+    command: celery -A tasks worker -c5 -l info -E -n ctrap
     volumes:
       - ./celery:/celery:ro
       - ../apps/cTRAP/sessions:/data
@@ -79,9 +79,10 @@ services:
   flower:
     container_name: flower
     image: mher/flower
-    command: celery -A tasks flower --url_prefix=flower
+    command: celery -A tasks flower --url_prefix=flower --persistent=True --db=/data/flower.db --state_save_interval=1000
     volumes:
       - ./celery:/celery:ro
+      - flower-data:/data
     working_dir: /celery
     ports:
       - 5555:5555
@@ -149,3 +150,4 @@ volumes:
   shinyproxy-containers:
   postgres-data:
   clickhouse-data:
+  flower-data:
