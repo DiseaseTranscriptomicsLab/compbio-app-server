@@ -16,15 +16,15 @@ responding)
 
 Nginx configuration is scattered along the following `.config` files:
 
-File                    | Description
-------------------------| ------------------------------------
-[nginx.conf][]          | Main configuration
-[shinyproxy.conf][]     | ShinyProxy-specific configuration
-[location_apps.conf][]  | Custom URL paths for ShinyProxy apps
-[location_utils.conf][] | Utilities
-[favicon.conf][]        | Favicons
-[error.conf][]          | Custom error page
-[public.conf][]         | Public folder
+File                                       | Description
+-------------------------------------------| ---------------------------
+[nginx.conf](nginx.conf)                   | Main configuration
+[shinyproxy.conf](shinyproxy.conf)         | ShinyProxy-specific configuration
+[location_apps.conf](location_apps.conf)   | Custom URL paths for ShinyProxy apps
+[location_utils.conf](location_utils.conf) | Utilities
+[favicon.conf][favicon.conf]               | Favicons
+[error.conf](error.conf)                   | Custom error page
+[public.conf](public.conf)                 | Public folder
 
 ## SSL certificate renewal
 
@@ -51,10 +51,9 @@ This can be configured in [public.config](public.conf).
 
 Favicon files are available in [`favicon`](favicon). Nginx serves these
 files in multiple standard paths (e.g. [`/favicon.ico`][favicon.ico]) as
-instructed in [`favicon.conf`](favicon.conf).
-
-ShinyProxy templates directly include the path to the icons in their HTML:
-[`../shinyproxy/templates/fragments/head.html`][shinyproxy-head]).
+instructed in [`favicon.conf`](favicon.conf). ShinyProxy templates directly
+include the path to the icons in their HTML:
+[`../shinyproxy/templates/fragments/head.html`][shinyproxy-head].
 
 To change the favicons of the website, simply replace the favicon files and
 refresh the page. Tools like [Favicon checker][] allow to test the favicons of
