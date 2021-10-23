@@ -116,6 +116,11 @@ File                                 | Description
 [`fragments`](templates/fragments)   | Reusable HTML code (page headers and navigation bar)
 [`assets/shinyproxy.css`](assets/shinyproxy.css) | CSS code
 
+> If an error occurs while ShinyProxy is down, a
+[custom Nginx error][nginx-error] is shown.
+
+[nginx-error]: ../nginx#custom-html-pages
+
 More HTML pages can be customised from ShinyProxy if needed: read
 [ShinyProxy's custom HTML template][custom-HTML].
 

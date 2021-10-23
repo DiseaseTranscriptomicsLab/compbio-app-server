@@ -63,7 +63,7 @@ a website.
 [shinyproxy-head]: ../shinyproxy/templates/fragments/head.html
 [Favicon checker]: https://realfavicongenerator.net/favicon_checker
 
-## Custom HTML pages
+## Custom HTML pages (e.g. 502 error page)
 
 Custom HTML pages served via Nginx are located in [`html`](html).
 
@@ -72,5 +72,9 @@ Nginx, a [custom 502 error](html/error_50x.html) is shown warning users that
 the server is currently having issues. This page can be previewed at any time
 in [/error_50x.html][error_50x.html].
 
-[error_50x.html]: https://compbio.imm.medicina.ulisboa.pt/error_50x.html
+Any errors that occur while ShinyProxy is running (e.g. going to a page that
+does not exist or if a container is not responding) can be customised via
+[ShinyProxy HTML templates][shinyproxy-templates].
 
+[error_50x.html]: https://compbio.imm.medicina.ulisboa.pt/error_50x.html
+[shinyproxy-templates]: ../shinyproxy#custom-shinyproxy-html
