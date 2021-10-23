@@ -3,18 +3,11 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head lang="en">
 	<title th:text="${appTitle}"></title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	
-	<link rel="stylesheet" media="screen" th:href="@{${bootstrapCss}}" />
-	<link rel="stylesheet" media="screen" th:href="@{/css/default.css}"/>
-	<link rel="stylesheet" media="screen" th:href="@{/assets/shinyproxy.css}"/>
-	
-	<script th:src="@{${jqueryJs}}"></script>
-	<script th:src="@{${bootstrapJs}}"></script>
-        <script async defer data-domain="compbio.imm.medicina.ulisboa.pt" data-api="/api/event" src="/js/plausible.js"></script>
+	<div th:replace="fragments/head :: head"></div>
+    <script async defer data-domain="compbio.imm.medicina.ulisboa.pt" data-api="/api/event" src="/js/plausible.js"></script>
 </head>
 <body>
-	<div th:replace="navbar :: navbar"></div>
+	<div th:replace="fragments/navbar :: navbar"></div>
 	
     <iframe id="shinyframe" th:src="${container}" width="100%" frameBorder="0"></iframe>
     <div class="loading">

@@ -1,26 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head>
+<head lang="en">
     <title th:text="${title}"></title>
     <meta name="description" content="Bioinformatic tools to analyse gene expression and alternative splicing in samples from normal and disease individuals from TCGA, GTEx and SRA">
     <meta name="keywords" content="bioinformatics, cancer, neuroscience, ageing, single-cell">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     
-    <link rel="stylesheet" media="screen" th:href="@{${bootstrapCss}}" />
-    <link rel="stylesheet" media="screen" th:href="@{/css/default.css}"/>
-    <link rel="stylesheet" media="screen" th:href="@{/assets/shinyproxy.css}"/>
-    
-    <script th:src="@{${jqueryJs}}"></script>
-    <script th:src="@{${bootstrapJs}}"></script>
+    <div th:replace="fragments/head :: head"></div>
     <script th:src="@{${cookieJs}}"></script>
     <script th:src="@{/js/new_version_check.js}"></script>
     <script async defer data-domain="compbio.imm.medicina.ulisboa.pt" data-api="/api/event" src="/js/plausible.js"></script>    
 </head>
 <body class="nav-aware">
     <!-- navigation bar -->
-    <div th:replace="navbar :: navbar"></div>
+    <div th:replace="fragments/navbar :: navbar"></div>
 
     <div id="new-version-banner" class="alert alert-info" role="alert" style="display:none;">
         A new version of ShinyProxy is available <button id="new-version-btn" class="btn btn-default btn-sm" >Switch to new version!</button>

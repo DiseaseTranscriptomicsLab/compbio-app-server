@@ -1,6 +1,5 @@
-.nav-aware {
-    padding-top: 70px;
-}
+.nav-aware { padding-top: 70px; }
+.nav-less-aware {padding-top: 30px; }
 
 footer {
     margin: 50px 0;
