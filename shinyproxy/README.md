@@ -103,3 +103,20 @@ docker-compose restart nginx
 2. Modify the `container-image` in [`application.yml`][application.yml] to
 include the latest version of the Docker image (if applicable)
 3. Restart ShinyProxy: `docker-compose restart shinyproxy`
+
+## Custom ShinyProxy HTML
+
+Custom HTML pages are available in [`templates`](templates):
+
+File                                 | Description
+-------------------------------------|---------------------------------
+[`index.html`](templates/index.html) | Landing page with app list
+[`app.html`](templates/app.html)     | Apps
+[`error.html`](templates/error.html) | Errors (e.g. 404 page not found)
+[`fragments`](templates/fragments)   | Reusable HTML code (page headers and navigation bar)
+[`assets/shinyproxy.css`](assets/shinyproxy.css) | CSS code
+
+More HTML pages can be customised from ShinyProxy if needed: read
+[ShinyProxy's custom HTML template][custom-HTML].
+
+[custom-HTML]: https://github.com/openanalytics/containerproxy/tree/master/src/main/resources/templates
