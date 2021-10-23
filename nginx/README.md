@@ -22,7 +22,7 @@ File                                       | Description
 [shinyproxy.conf](shinyproxy.conf)         | ShinyProxy-specific configuration
 [location_apps.conf](location_apps.conf)   | Custom URL paths for ShinyProxy apps
 [location_utils.conf](location_utils.conf) | Utilities
-[favicon.conf][favicon.conf]               | Favicons
+[favicon.conf](favicon.conf)               | Favicons
 [error.conf](error.conf)                   | Custom error page
 [public.conf](public.conf)                 | Public folder
 
