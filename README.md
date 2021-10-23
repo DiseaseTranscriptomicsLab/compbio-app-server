@@ -70,10 +70,10 @@ Asset                                           | Description
 ----------------------------------------------- | --------------------------------------------------------------------
 [`docker-compose.yml`](docker-compose.yml)      | Docker Compose configuration
 [`nginx`](nginx)                                | Nginx configuration files (main one is [`nginx.conf`][nginx.conf])
+[`nginx/public`](nginx/public)                  | Publicly available data downloadable at [`/public`][public]
 [`shinyproxy/application.yml`][application.yml] | ShinyProxy configuration (including Shiny apps)
 [`shinyproxy/templates`](shinyproxy/templates)  | ShinyProxy custom HTML files
 [`celery/tasks.py`](celery/tasks.py)            | Celery tasks
-[`public`](nginx/public)                        | Publicly available data downloadable at [`/public`][public]
 
 [application.yml]: shinyproxy/application.yml
 [nginx.conf]: nginx/nginx.conf
