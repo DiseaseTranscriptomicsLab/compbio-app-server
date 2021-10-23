@@ -6,7 +6,7 @@ for the following:
 - Reverse proxy (i.e. URL redirection)
 - SSL certificates for encrypted HTTPS traffic
 - [Public](public) folder: all data in this folder is available to be browsed
-and downloaded at [/public]
+and downloaded at [/public][public]
 - [Favicons](favicon)
 - Custom HTML pages, including 502 error page (shown when ShinyProxy is not
 responding)
