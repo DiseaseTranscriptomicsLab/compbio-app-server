@@ -116,12 +116,12 @@ File                                 | Description
 [`fragments`](templates/fragments)   | Reusable HTML code (page headers and navigation bar)
 [`assets/shinyproxy.css`](assets/shinyproxy.css) | CSS code
 
-> If an error occurs while ShinyProxy is down, a
-[custom Nginx error][nginx-error] is shown.
+> Error pages are shown when ShinyProxy is working. Otherwise, if ShinyProxy is
+down/unresponsive, a [custom Nginx error][nginx-error] is shown.
 
-[nginx-error]: ../nginx#custom-html-pages
+[nginx-error]: ../nginx#custom-html-pages-eg-502-error-page
 
 More HTML pages can be customised from ShinyProxy if needed: read
 [ShinyProxy's custom HTML template][custom-HTML].
 
-[custom-HTML]: https://github.com/openanalytics/containerproxy/tree/master/src/main/resources/templates
+[custom-HTML]: https://github.com/openanalytics/shinyproxy-config-examples/tree/master/04-custom-html-template
