@@ -12,8 +12,8 @@ proxy:
   specs:
   - id: psichomics
     description: Alternative splicing quantification, visualisation and analysis
-    container-image: nunoagostinho/psichomics:1.18.6
-    container-cmd: ["R", "-e", "psichomics::psichomics(host='0.0.0.0', port=3838, shinyproxy=TRUE)"]
+    container-image: nunoagostinho/psichomics:1.20.0
+    container-cmd: ["R", "-e", "psichomics::psichomics(host='0.0.0.0', port=3838, shinyproxy=TRUE, cache='~/Downloads/AnnotationHub')"]
     container-network: "${proxy.docker.container-network}"
     container-volumes: [ "/srv/apps/psichomics/data:/root/Downloads" ]
   - id: voyAGEr
