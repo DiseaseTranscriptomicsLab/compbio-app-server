@@ -111,7 +111,6 @@ services:
     restart: always
     volumes:
       - postgres-data:/var/lib/postgresql/data
-      - ./postgres:/docker-entrypoint-initdb.d
     environment:
       - POSTGRES_PASSWORD=postgres
     ports:
@@ -132,7 +131,7 @@ services:
 
   plausible:
     container_name: plausible
-    image: plausible/analytics:latest
+    image: plausible/analytics:v1
     restart: always
     command: sh -c "sleep 10 && /entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh db init-admin && /entrypoint.sh run"
     depends_on:
