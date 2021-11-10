@@ -26,7 +26,7 @@ proxy:
     container-network: "${proxy.docker.container-network}"
     container-volumes: [ "/srv/apps/voyager/data:/home/app/data" ]
   - id: scStudio_LiMM
-    container-image: genomeptimm/scstudio:1.1
+    container-image: genomeptimm/scstudio:1.2
     container-network: "${proxy.docker.container-network}"
     container-volumes: [ "/srv/apps/scStudio_LiMM/datasets:/home/app/datasets" ]
   - id: cTRAP
