@@ -44,7 +44,7 @@ Field               | Description
 `description`       | App description
 `container-image`   | Docker image of the app
 `container-cmd`     | Command to start the Shiny/Python app (optional; must use host `'0.0.0.0'` and port `3838`)
-`container-network` | Must be `"${proxy.docker.container-network}"` for ShinyProxy to communicate with Docker Compose
+`container-network` | Must be `"${proxy.docker.container-network}"` for Docker images to communicate with Docker Compose
 `container-volumes` | Volumes/folders to mount in the Docker image
 `template-properties` | Custom properties defined in this project
 `startup-time`      | Time taken to fill progress bar displayed while loading the app (optional; 5 seconds by default)
