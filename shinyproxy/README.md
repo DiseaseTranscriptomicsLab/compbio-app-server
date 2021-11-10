@@ -30,6 +30,8 @@ instance:
     container-cmd: ["R", "-e", "psichomics::psichomics(host='0.0.0.0', port=3838)"]
     container-network: "${proxy.docker.container-network}"
     container-volumes: [ "/srv/apps/psichomics/data:/root/Downloads" ]
+    template-properties:
+      startup-time: 15s
 ```
 
 Each app can have multiple configuration fields
@@ -37,13 +39,15 @@ Each app can have multiple configuration fields
 
 Field               | Description
 ------------------- | --------------
-`id`                | app identifier
-`display_name`      | app display name (optional; if not set, `id` will be used as `display_name`)
-`description`       | app description
+`id`                | App identifier
+`display_name`      | App display name (optional; `display_name` is `id` by default)
+`description`       | App description
 `container-image`   | Docker image of the app
-`container-cmd`     | command to start the Shiny/Python app (optional if Dockerfile already launches the app; make sure the app is launched with host `'0.0.0.0'` and port `3838`)
-`container-network` | should be `"${proxy.docker.container-network}"`; required for ShinyProxy to communicate with the Docker image inside Docker compose
-`container-volumes` | volumes/folders to mount in the Docker image
+`container-cmd`     | Command to start the Shiny/Python app (optional; must use host `'0.0.0.0'` and port `3838`)
+`container-network` | Must be `"${proxy.docker.container-network}"` for ShinyProxy to communicate with Docker Compose
+`container-volumes` | Volumes/folders to mount in the Docker image
+`template-properties` | Custom properties defined in this project
+`startup-time`      | Time taken to fill progress bar displayed while loading the app (optional; 5 seconds by default)
 
 After editing the file, restart ShinyProxy:
 
@@ -54,26 +58,7 @@ docker-compose restart shinyproxy
 [application.yml]: application.yml
 [app-config]: https://shinyproxy.io/documentation/configuration/#apps
 
-### 3. Slow down the progress bar when opening an app (optional)
-
-When loading apps, a progress bar is displayed that fills in 5 seconds. If your
-app takes more time to start, you should customise the time taken to fill the
-bar. To do so, open [`templates/assets/shinyproxy.css`][shinyproxy.css] and add
-the following line to the end of the file:
-
-```css
-.progress-psichomics { transition: width 20s ease-in-out; }
-```
-
-Replace `psichomics` with your app ID (defined in step 2) and replace `20s` with
-the desired amount of seconds.
-
-After saving the file, the change will be automatically applied next time you
-open your app in the server.
-
-[shinyproxy.css]: templates/assets/shinyproxy.css
-
-### 4. Redirect from an URL location via Nginx (optional)
+### 3. Redirect from an URL location via Nginx (optional)
 
 All apps in ShinyProxy are served via an intermediary path:
 
