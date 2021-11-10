@@ -34,8 +34,7 @@ instance:
       startup-time: 15s
 ```
 
-Each app can have multiple configuration fields
-([comprehensive list of available fields][app-config]):
+Each app can have multiple configuration fields:
 
 Field               | Description
 ------------------- | --------------
@@ -48,6 +47,7 @@ Field               | Description
 `container-volumes` | Volumes/folders to mount in the Docker image
 `template-properties` | Custom properties defined in this project
 `startup-time`      | Time taken to fill progress bar displayed while loading the app (optional; 5 seconds by default)
+...                 | Many more fields are available: see a [list of available fields to configure apps][app-config]
 
 After editing the file, restart ShinyProxy:
 
