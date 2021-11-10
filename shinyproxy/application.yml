@@ -6,6 +6,8 @@ proxy:
   container-wait-time: 30000
   container-log-path: /container-logs
   usage-stats-url: micrometer
+  stop-proxies-on-shutdown: false
+  recover-running-proxies: true
   docker:
     internal-networking: true
     container-network: shiny-net
@@ -16,6 +18,8 @@ proxy:
     container-cmd: ["R", "-e", "psichomics::psichomics(host='0.0.0.0', port=3838, shinyproxy=TRUE, cache='~/Downloads/AnnotationHub')"]
     container-network: "${proxy.docker.container-network}"
     container-volumes: [ "/srv/apps/psichomics/data:/root/Downloads" ]
+    template-properties:
+      startup-time: 20s
   - id: voyAGEr
     description: Analysis of age-related gene expression changes in human
     container-image: arthurschneider/voyager
@@ -31,6 +35,8 @@ proxy:
     container-network: "${proxy.docker.container-network}"
     container-cmd: ["R", "-e", "cTRAP::cTRAP(host='0.0.0.0', port=3838, flowerURL='http://flower:5555/flower')"]
     container-volumes: [ "/srv/apps/cTRAP/sessions:/data" ]
+    template-properties:
+      startup-time: 15s
 
 logging:
   file:

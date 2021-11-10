@@ -1,50 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head lang="en">
-	<title th:text="${appTitle}"></title>
-	<div th:replace="fragments/head :: head"></div>
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+  <head lang="en">
+    <title th:text="${appTitle}"></title>
+    <div th:replace="fragments/head :: head"></div>
     <script async defer data-domain="compbio.imm.medicina.ulisboa.pt" data-api="/api/event" src="/js/plausible.js"></script>
-</head>
-<body>
-	<div th:replace="fragments/navbar :: navbar"></div>
-	
+  </head>
+  <body>
+    <div th:replace="fragments/navbar :: navbar"></div>
     <iframe id="shinyframe" th:src="${container}" width="100%" frameBorder="0"></iframe>
     <div class="loading">
-        <div class="loading-txt">
-            Launching <span th:text="${appTitle}"></span>...
-        </div>
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" th:classappend="${'progress-' + appTitle}"></div>
-        </div>
+      <div class="loading-txt">
+        Launching <span th:text="${appTitle}"></span>...
+      </div>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar"></div>
+      </div>
     </div>
-    
-	<script type="text/javascript" th:inline="javascript">
-		function setShinyframeHeight() {
-			$('#shinyframe').css('height', ($(window).height())+'px');
-		}
-		window.addEventListener("load", setShinyframeHeight);
-		window.addEventListener("resize",  setShinyframeHeight);
-		
-		$(window).on('load', function() {
-			var source = $("#shinyframe").attr("src");
-			if (source == "") {
-				$(".loading").show();
-				
-				setTimeout(function() {
-                    $('.progress-bar').css('width', '100%');
-                }, 1);
-				
-				$.post(window.location.pathname + window.location.search, function(response) {
-					$("#shinyframe").attr("src", response.containerPath);
-					$(".loading").fadeOut("slow");
-				}).fail(function(request) {
-					var newDoc = document.open("text/html", "replace");
-					newDoc.write(request.responseText);
-					newDoc.close();
-				});
-			}
-		});
-	</script>
-</body>
+    <style th:inline="text">
+      .progress-bar {
+        transition: width [[${@thymeleaf.getTemplateProperty(appTitle, 'startup-time', '5s')}]] ease-in-out;
+      }
+    </style>
+    <script type="text/javascript" th:inline="javascript">
+      function setShinyframeHeight() {
+        $('#shinyframe').css('height', ($(window).height())+'px');
+      }
+      window.addEventListener("load", setShinyframeHeight);
+      window.addEventListener("resize",  setShinyframeHeight);	
+
+      $(window).on('load', function() {
+        var source = $("#shinyframe").attr("src");
+        if (source == "") {
+          $(".loading").show();
+          setTimeout(function() {
+            $('.progress-bar').css('width', '100%');
+          }, 1);
+
+          $.post(window.location.pathname + window.location.search, function(response) {
+            $("#shinyframe").attr("src", response.containerPath);
+            $(".loading").fadeOut("slow");
+          }).fail(function(request) {
+            var newDoc = document.open("text/html", "replace");
+            newDoc.write(request.responseText);
+            newDoc.close();
+          });
+        }
+      });
+    </script>
+  </body>
 </html>

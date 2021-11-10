@@ -17,7 +17,3 @@ h1 {
     width: 350px;
     margin: auto;
 }
-
-.progress-bar { transition: width 5s ease-in-out; }
-.progress-psichomics { transition: width 20s ease-in-out; }
-.progress-cTRAP { transition: width 15s ease-in-out; }
