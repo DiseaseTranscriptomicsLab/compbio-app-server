@@ -26,25 +26,26 @@ instance:
 ```yml
   - id: psichomics
     description: Alternative splicing quantification, visualisation and analysis
-    container-image: nunoagostinho/psichomics:dev
+    container-image: nunoagostinho/psichomics:1.18.6
     container-cmd: ["R", "-e", "psichomics::psichomics(host='0.0.0.0', port=3838)"]
     container-network: "${proxy.docker.container-network}"
     container-volumes: [ "/srv/apps/psichomics/data:/root/Downloads" ]
 ```
 
-You can edit any field you want with the exception of
-`container-network: "${proxy.docker.container-network}"`: this is required for
-ShinyProxy to communicate with the Docker image inside Docker Compose.
-[Read more details on app configuration for ShinyProxy.][app-config]
+Each app can have multiple configuration fields
+([comprehensive list of available fields][app-config]):
 
-> The `container-cmd` can be ignored if the last command inside the Dockerfile
-already launches a Shiny app. Just make sure that the Shiny app is launched with
-the host as '0.0.0.0' and the port 3838. Otherwise, your Shiny app will not run.
+Field               | Description
+------------------- | --------------
+`id`                | app identifier
+`display_name`      | app display name (optional; if not set, `id` will be used as `display_name`)
+`description`       | app description
+`container-image`   | Docker image of the app
+`container-cmd`     | command to start the Shiny/Python app (optional if Dockerfile already launches the app; make sure the app is launched with host `'0.0.0.0'` and port `3838`)
+`container-network` | should be `"${proxy.docker.container-network}"`; required for ShinyProxy to communicate with the Docker image inside Docker compose
+`container-volumes` | volumes/folders to mount in the Docker image
 
-Aftwards, ShinyProxy needs to be restarted. While restarting ShinyProxy, the
-website will show you simply **502: Bad Gateway**. This is expected until
-ShinyProxy is ready to run and should take around 20 seconds. To restart
-ShinyProxy, run:
+After editing the file, restart ShinyProxy:
 
 ```bash
 docker-compose restart shinyproxy
