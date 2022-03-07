@@ -1,4 +1,4 @@
-FROM bioconductor/bioconductor_docker:RELEASE_3_13
+FROM nunoagostinho/ctrap:1.12.0
 LABEL maintainer="Nuno Agostinho <nunodanielagostinho@gmail.com>"
 
 RUN apt-get update && apt-get install -y python3 python3-pip
@@ -18,7 +18,3 @@ WORKDIR /data
 
 # Default port
 EXPOSE 5555
-
-# Install R packages
-RUN R -e "install.packages(c('BiocManager', 'shiny'))"
-RUN R -e "BiocManager::install('cTRAP')"
