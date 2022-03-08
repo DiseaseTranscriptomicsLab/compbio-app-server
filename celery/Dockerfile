@@ -1,4 +1,4 @@
-FROM nunoagostinho/cTRAP:1.12.0
+FROM nunoagostinho/ctrap:1.12.0
 LABEL maintainer="Nuno Agostinho <nunodanielagostinho@gmail.com>"
 
 RUN apt-get update && apt-get install -y python3 python3-pip

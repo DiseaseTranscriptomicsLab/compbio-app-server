@@ -39,7 +39,7 @@ proxy:
     container-volumes: [ "/srv/apps/scStudio_LiMM/datasets:/home/app/datasets" ]
   - id: cTRAP
     description: Identifying candidate causal perturbations from differential gene expression data
-    container-image: nunoagostinho/ctrap:dev
+    container-image: nunoagostinho/ctrap:1.12.0
     container-network: "${proxy.docker.container-network}"
     container-cmd: ["R", "-e", "cTRAP::cTRAP(host='0.0.0.0', port=3838, flowerURL='http://flower:5555/flower')"]
     container-volumes: [ "/srv/apps/cTRAP/sessions:/data" ]
