@@ -14,14 +14,7 @@ msg () {
     echo -e "\n${COL}$@${NO_COL}"
 }
 
-# Building necessary Docker images --------------------------------------------
-msg "Preparing Docker images for services..."
-docker compose pull
-docker compose build
-
-msg "Preparing Docker images for ShinyProxy apps..."
-./${SHINYPROXY_DIR}/setup-shinyproxy.sh
-
+# Prepare config files --------------------------------------------------------
 msg "Preparing Nginx and ShinyProxy config files from default..."
 
 copyDefault () {
@@ -34,3 +27,11 @@ copyDefault () {
 
 copyDefault $NGINX_CONFIG
 copyDefault $SHINYPROXY_CONFIG
+
+# Building necessary Docker images --------------------------------------------
+msg "Preparing Docker images for services..."
+docker compose pull
+docker compose build
+
+msg "Preparing Docker images for ShinyProxy apps..."
+./${SHINYPROXY_DIR}/setup-shinyproxy.sh
