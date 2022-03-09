@@ -5,6 +5,7 @@ NGINX_DIR=$ROOT/nginx
 NGINX_CONFIG=$NGINX_DIR/nginx.conf
 
 SHINYPROXY_DIR=$ROOT/shinyproxy
+SHINYPROXY_DIR_REALPATH=$( realpath $SHINYPROXY_DIR )
 SHINYPROXY_CONFIG=$SHINYPROXY_DIR/application.yml
 SHINY_APPS_DIR=$SHINYPROXY_DIR/shiny-apps
 
@@ -39,7 +40,7 @@ test_dirs=$(grep -o "/srv.*:" $SHINYPROXY_CONFIG | \
 for i in ${test_dirs}; do mkdir -p $i; done
 
 # Change ShinyProxy app directories used in shinyproxy/application.yml
-sed -i.bak "s|/srv|$SHINYPROXY_DIR|g" $SHINYPROXY_CONFIG
+sed -i.bak "s|/srv|$SHINYPROXY_DIR_REALPATH|g" $SHINYPROXY_CONFIG
 msg "  - Done! Add data for apps inside $SHINY_APPS_DIR"
 
 msg "==========================\nEverything seems to be ready! Now simply run:"
