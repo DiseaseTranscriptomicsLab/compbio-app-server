@@ -3,6 +3,7 @@ services:
   nginx:
     image: nginx
     container_name: nginx
+    restart: always
     ports:
       - 80:80
       - 443:443
@@ -19,7 +20,7 @@ services:
   shinyproxy:
     image: openanalytics/shinyproxy:2.6.0
     container_name: shinyproxy
-    restart: on-failure
+    restart: always
     user: root
     ports:
       - 8080:8080
@@ -52,6 +53,7 @@ services:
   redis:
     image: redis:6-alpine
     container_name: redis
+    restart: always
     sysctls:
       - net.core.somaxconn=65535
     ports:
@@ -60,6 +62,7 @@ services:
   prometheus:
     image: prom/prometheus
     container_name: prometheus
+    restart: always
     volumes:
       - ./prometheus:/etc/prometheus:ro
       - prometheus-data:/prometheus
@@ -67,9 +70,10 @@ services:
       - 9090:9090
 
   celery-ctrap:
-    container_name: celery-ctrap
     build: ./celery
+    container_name: celery-ctrap
     command: celery -A tasks worker -c5 -l info -E -n ctrap
+    restart: always
     volumes:
       - ./celery:/celery:ro
       - ../apps/cTRAP/sessions:/data
@@ -77,9 +81,10 @@ services:
       - redis
 
   flower:
-    container_name: flower
     image: mher/flower
+    container_name: flower
     command: celery -A tasks flower --url_prefix=flower --persistent=True --db=/data/flower.db --state_save_interval=1000
+    restart: always
     volumes:
       - ./celery:/celery:ro
       - flower-data:/data
@@ -94,8 +99,8 @@ services:
       - redis
 
   rstudio-server:
-    container_name: rstudio-server
     build: ./rstudio-server
+    container_name: rstudio-server
     ports:
       - 8787:8787
     environment:
@@ -104,8 +109,8 @@ services:
       - dev
 
   postgres:
-    container_name: postgres
     image: postgres:12.8
+    container_name: postgres
     restart: always
     volumes:
       - postgres-data:/var/lib/postgresql/data
@@ -116,8 +121,8 @@ services:
       - 5432:5432
 
   clickhouse:
-    container_name: clickhouse
     image: yandex/clickhouse-server:21.7-alpine
+    container_name: clickhouse
     restart: always
     volumes:
       - clickhouse-data:/var/lib/clickhouse
@@ -129,8 +134,8 @@ services:
         hard: 262144
 
   plausible:
-    container_name: plausible
     image: plausible/analytics:v1
+    container_name: plausible
     restart: always
     command: sh -c "sleep 10 && /entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh db init-admin && /entrypoint.sh run"
     depends_on:
