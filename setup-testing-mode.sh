@@ -24,8 +24,8 @@ sed -i.bak -E '/ssl/s/( *)/\1#/' $NGINX_CONFIG
 msg "     - Successfully changed $NGINX_CONFIG"
 
 sed -i.bak -E 's/(server:)/#\1/' $SHINYPROXY_CONFIG
-sed -i.bak -E 's/(secure-cookies::)/#\1/' $SHINYPROXY_CONFIG
-sed -i.bak -E 's/(forward-headers-strategy::)/#\1/' $SHINYPROXY_CONFIG
+sed -i.bak -E 's/(secure-cookies:)/#\1/' $SHINYPROXY_CONFIG
+sed -i.bak -E 's/(forward-headers-strategy:)/#\1/' $SHINYPROXY_CONFIG
 sed -i.bak -E 's/(frame-options:)/#\1/' $SHINYPROXY_CONFIG
 msg "     - Successfully changed $SHINYPROXY_CONFIG"
 
