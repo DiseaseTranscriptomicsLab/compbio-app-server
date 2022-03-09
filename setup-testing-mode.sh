@@ -21,13 +21,13 @@ msg "Modifying files to ignore SSL certificates in testing..."
 
 sed -i.bak -E 's/443 ssl/80/' $NGINX_CONFIG
 sed -i.bak -E '/ssl/s/( *)/\1#/' $NGINX_CONFIG
-msg "     - Successfully changed $NGINX_CONFIG"
+msg "  - Successfully changed $NGINX_CONFIG"
 
 sed -i.bak -E 's/(server:)/#\1/' $SHINYPROXY_CONFIG
 sed -i.bak -E 's/(secure-cookies:)/#\1/' $SHINYPROXY_CONFIG
 sed -i.bak -E 's/(forward-headers-strategy:)/#\1/' $SHINYPROXY_CONFIG
 sed -i.bak -E 's/(frame-options:)/#\1/' $SHINYPROXY_CONFIG
-msg "     - Successfully changed $SHINYPROXY_CONFIG"
+msg "  - Successfully changed $SHINYPROXY_CONFIG"
 
 # Setup test directories ------------------------------------------------------
 echo
@@ -40,8 +40,8 @@ for i in ${test_dirs}; do mkdir -p $i; done
 
 # Change ShinyProxy app directories used in shinyproxy/application.yml
 sed -i.bak "s|/srv|$SHINYPROXY_DIR|g" $SHINYPROXY_CONFIG
-msg "     - Done! Add data for apps inside $SHINY_APPS_DIR"
+msg "  - Done! Add data for apps inside $SHINY_APPS_DIR"
 
 msg "==========================\nEverything seems to be ready! Now simply run:"
 msg "  docker-compose up -d"
-msg "Then open your browser and go to http://localhost"
+msg "Then open your browser and go to http://localhost\n"

@@ -23,5 +23,14 @@ msg "Preparing Docker images for ShinyProxy apps..."
 ./${SHINYPROXY_DIR}/setup-shinyproxy.sh
 
 msg "Preparing Nginx and ShinyProxy config files from default..."
-cp $NGINX_CONFIG.default $NGINX_CONFIG
-cp $SHINYPROXY_CONFIG.default $SHINYPROXY_CONFIG
+
+copyDefault () {
+    if [[ -f "$1" ]]; then
+      mv $1 $1.bkp
+      msg "  - File $1 already existed and was renamed $1.bkp"
+    fi
+    cp $1.default $1
+}
+
+copyDefault $NGINX_CONFIG
+copyDefault $SHINYPROXY_CONFIG
