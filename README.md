@@ -36,13 +36,13 @@ To start running the app server, go to the project folder and run:
 1. [`./shinyproxy/setup.sh`](setup.sh) to build local Docker images,
 download automatically prepare Docker images used in Docker Compose and as
 ShinyProxy apps
-2. `docker-compose up -d` to start all services in detached mode
+2. `docker compose up -d` to start all services in detached mode
 
 The app server should now be available. Note that some services may take some
 time to wake up, but everything should be running after ~30 seconds.
 
 Some services are only available in the `dev` profile (such as RStudio). To
-run this profile, type: `docker-compose --profile dev up -d --build`
+run this profile, type: `docker compose --profile dev up -d --build`
 
 ### Testing environment
 
@@ -51,18 +51,18 @@ environment in your local computer by running:
 
 1. [`./setup-testing-mode.sh`](setup-testing-mode.sh) to change files for
 testing and prepare all Docker images
-2. `docker-compose up -d` to start all services in detached mode
+2. `docker compose up -d` to start all services in detached mode
 
 ### Essential Docker Compose commands
 
-- `docker-compose up -d --build`: build local and download remote Docker
+- `docker compose up -d --build`: build local and download remote Docker
 images, and then start all services in detached mode
-- `docker-compose down`: stop all services
-- `docker-compose restart shinyproxy`: restart a specific service (in this case,
+- `docker compose down`: stop all services
+- `docker compose restart shinyproxy`: restart a specific service (in this case,
 `shinyproxy`); useful after changing the configuration of a single service
-- `docker-compose logs nginx`: print logs of a specific service (in this case,
+- `docker compose logs nginx`: print logs of a specific service (in this case,
 `nginx`)
-- `docker-compose -h`: show further documentation
+- `docker compose -h`: show further documentation
 
 ### Next steps
 

@@ -36,7 +36,7 @@ SSL certificates need to be renewed frequently (e.g. every year). To do so:
 [`nginx.conf`](nginx.conf) and replace the path to the certificates (in
 `ssl_certificate` and `ssl_certificate_key`)
 
-3. Manually restart Nginx with the command `docker-compose restart nginx`
+3. Manually restart Nginx with the command `docker compose restart nginx`
 
 ## Public folder
 

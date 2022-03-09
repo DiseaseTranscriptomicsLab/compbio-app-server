@@ -52,7 +52,7 @@ Field               | Description
 After editing the file, restart ShinyProxy:
 
 ```bash
-docker-compose restart shinyproxy
+docker compose restart shinyproxy
 ```
 
 [application.yml]: application.yml
@@ -77,7 +77,7 @@ location = /appID { return 307 /app/appID; }
 After saving the file, restart Nginx to test out your new link:
 
 ```bash
-docker-compose restart nginx
+docker compose restart nginx
 ```
 
 [307]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/307
@@ -88,7 +88,7 @@ docker-compose restart nginx
 1. Pull the latest Docker image available to the app server
 2. Modify the `container-image` in [`application.yml`][application.yml] to
 include the latest version of the Docker image (if applicable)
-3. Restart ShinyProxy: `docker-compose restart shinyproxy`
+3. Restart ShinyProxy: `docker compose restart shinyproxy`
 
 ## Custom ShinyProxy HTML
 

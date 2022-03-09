@@ -44,5 +44,5 @@ sed -i.bak "s|/srv|$SHINYPROXY_DIR_REALPATH|g" $SHINYPROXY_CONFIG
 msg "  - Done! Add data for apps inside $SHINY_APPS_DIR"
 
 msg "==========================\nEverything seems to be ready! Now simply run:"
-msg "  docker-compose up -d"
+msg "  docker compose up -d"
 msg "Then open your browser and go to http://localhost\n"
