@@ -1,4 +1,4 @@
-version: "3"
+version: "3.9"
 services:
   nginx:
     image: nginx
@@ -46,10 +46,8 @@ services:
     environment:
       - GF_SERVER_ROOT_URL=http://localhost:3000/grafana/
       - GF_SERVER_SERVE_FROM_SUB_PATH=true
-      - GF_AUTH_ANONYMOUS_ENABLED=true
-      - GF_AUTH_ANONYMOUS_ORG_NAME=Main Org.
-      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
-      - GF_AUTH_ANONYMOUS_HIDE_VERSION=true
+      - GF_SECURITY_ADMIN_USER=${GRAPHANA_USER:-graphana}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAPHANA_PASSWORD:-graphana_pass}
 
   redis:
     image: redis:6-alpine
@@ -101,7 +99,7 @@ services:
     ports:
       - 8787:8787
     environment:
-      - PASSWORD=hello
+      - PASSWORD=${RSTUDIO_PASSWORD:-rstudio_pass}
     profiles:
       - dev
 
@@ -112,7 +110,8 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres_pass}
     ports:
       - 5432:5432
 
@@ -139,8 +138,14 @@ services:
       - clickhouse
     ports:
       - 8000:8000
-    env_file:
-      - ./plausible/plausible-conf.env
+    environment:
+      - ADMIN_USER_EMAIL=${PLAUSIBLE_EMAIL:-someone@email.com}
+      - ADMIN_USER_NAME=${PLAUSIBLE_USER:-plausible}
+      - ADMIN_USER_PWD=${PLAUSIBLE_PASSWORD:-plausible_pass}
+      - BASE_URL=https://compbio.imm.medicina.ulisboa.pt/plausible
+      - SECRET_KEY_BASE=RcqevpL5w8SzrSl0lhNy08KDPrtJE8LGXqX/uvozyC6Vap6+yq6w0q10DJICqz06+3PeDopOmQ8Wq6q3kFtaMw==
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/plausible
+      - CLICKHOUSE_DATABASE_URL=http://clickhouse:8123/clickhouse
 
 networks:
   default:
