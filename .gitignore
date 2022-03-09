@@ -2,3 +2,5 @@
 public/*
 shinyproxy/shiny-apps
 **.bak
+shinyproxy/application.yml
+nginx/nginx.conf

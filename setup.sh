@@ -21,3 +21,7 @@ docker compose build
 
 msg "Preparing Docker images for ShinyProxy apps..."
 ./${SHINYPROXY_DIR}/setup-shinyproxy.sh
+
+msg "Preparing Nginx and ShinyProxy config files from default..."
+cp $NGINX_CONFIG.default $NGINX_CONFIG
+cp $SHINYPROXY_CONFIG.default $SHINYPROXY_CONFIG
