@@ -16,7 +16,7 @@ jobs:
         run: ./setup.sh
     
       - name: Test the server
-        run: zsh ./test-localhost.sh
+        run: sudo apt-get install -y zsh && zsh ./test-localhost.sh
 
       - name: Check running containers
         run: docker ps
