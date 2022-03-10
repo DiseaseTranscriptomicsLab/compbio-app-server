@@ -13,10 +13,13 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup project
-        run: ./setup.sh
+        run: ./setup-testing-mode.sh
     
       - name: Test the server
         run: ./test-localhost.sh
 
       - name: Check running containers
         run: docker ps
+
+      - name: nginx logs
+        run: docker compose logs nginx
