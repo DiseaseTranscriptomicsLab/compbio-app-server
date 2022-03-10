@@ -28,7 +28,7 @@ function url() {
 # Unit tests -------------------------------------------------------------------
 
 docker-compose up -d
-sleep 30
+sleep 60
 
 # nginx
 msg "Testing nginx..."
