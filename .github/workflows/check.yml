@@ -16,7 +16,7 @@ jobs:
         run: ./setup.sh
     
       - name: Test the server
-        run: ./test-localhost.sh
+        run: zsh ./test-localhost.sh
 
       - name: Check running containers
         run: docker ps
