@@ -15,13 +15,8 @@ jobs:
       - name: Setup project
         run: ./setup.sh
     
-      - name: Build the Docker Compose stack
-        run: docker compose up -d
+      - name: Test the server
+        run: ./test-localhost.sh
 
-      - name: Sleep
-        uses: jakejarvis/wait-action@master
-        with:
-          time: '60s'
-        
       - name: Check running containers
         run: docker ps
