@@ -17,12 +17,16 @@ url () {
     echo $ret
 }
 
+FAIL=0
+
 assertThat () {
     message="$1"
     string=$( url "$2")
     condition="$3"
     printf "$message: "
-    echo "$string" | grep -q "$condition" && inform "OK" || error "FAILED"
+
+    countError () { error "FAILED"; let "FAIL++"; }
+    echo "$string" | grep -q "$condition" && inform "OK" || countError
 }
 
 # Unit tests -------------------------------------------------------------------
@@ -52,3 +56,5 @@ assertThat "plausible redirects to login" $plausible "302 Found"
 
 plausible_login=http://localhost:8000/login
 assertThat "plausible login is healthy" $plausible_login "200 OK"
+
+if [ "$FAIL" -gt 0 ]; then error "\nERROR: $FAIL test(s) failed"; exit 1; fi
