@@ -23,7 +23,7 @@ assertThat () {
     message="$1"
     string=$( url "$2")
     condition="$3"
-    
+    echo Returned: "$string"
     printf "$message: "
     countError () { error "FAILED"; let "FAIL++"; }
     echo "$string" | grep -q "$condition" && inform "OK" || countError
