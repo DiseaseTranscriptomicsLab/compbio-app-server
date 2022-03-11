@@ -15,7 +15,7 @@ jobs:
       - name: Setup staging mode
         run: ./setup-testing-mode.sh
     
-      - name: Test the server
+      - name: Test server
         run: ./test-localhost.sh
 
       - name: Check running containers
