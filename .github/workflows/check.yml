@@ -20,3 +20,9 @@ jobs:
 
       - name: Check running containers
         run: docker ps
+        
+        - name: Show logs
+          run: docker compose logs
+        
+        - name: Shut down services
+          run: docker compose down
