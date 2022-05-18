@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html 
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head></head>
 <body>
-	<div th:fragment="navbar" id="navbar">
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">
-					<img class="navbar-brand" th:src="${logo}" />
-					<a class="navbar-brand" th:href="@{/}" th:text="${title}"></a>
-				</div>
-				<div class="collapse navbar-collapse">
-      				<ul class="nav navbar-nav navbar-right">
-					<li><a href="https://github.com/nuno-agostinho/compbio-app-server" target="_blank">GitHub</a></li>
-        				<li><a th:href="@{mailto:nunoagostinho@medicina.ulisboa.pt?subject={subject}{name}(subject='NMorais app server',name=${appTitle} ? (${' - ' + appTitle}) : '')}">Report Issue</a></li>
-      				</ul>
-    			</div>
-			</div>
-		</nav>
-	</div>
+    <div th:fragment="navbar" id="navbar">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <img class="navbar-brand" th:src="${logo}" />
+                    <a class="navbar-brand" th:href="@{/}" th:text="${title}"></a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="https://github.com/nuno-agostinho/compbio-app-server" target="_blank">GitHub</a></li>
+                        <li><a th:href="@{mailto:nunoagostinho@medicina.ulisboa.pt?subject={subject}{name}(subject='NMorais app server',name=${appTitle} ? (${' - ' + appTitle}) : '')}">Report Issue</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
 </body>
 </html>
