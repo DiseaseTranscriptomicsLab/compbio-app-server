@@ -44,7 +44,7 @@ services:
       - grafana-data:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning:ro
     environment:
-      - GF_SERVER_ROOT_URL=http://localhost:3000/grafana/
+      - GF_SERVER_ROOT_URL=http://localhost/grafana/
       - GF_SERVER_SERVE_FROM_SUB_PATH=true
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_NAME=Main Org.
@@ -131,7 +131,7 @@ services:
 
   plausible:
     container_name: plausible
-    image: plausible/analytics:v1
+    image: plausible/analytics:v1.4.2
     restart: always
     command: sh -c "sleep 10 && /entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh db init-admin && /entrypoint.sh run"
     depends_on:
