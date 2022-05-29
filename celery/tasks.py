@@ -1,6 +1,6 @@
 import os, time
 from datetime import datetime
-from subprocess import run, PIPE
+from subprocess import run, PIPE, STDOUT
 
 # Celery configuration
 from celery import Celery
@@ -12,7 +12,7 @@ app.conf.CELERY_WORKER_SEND_TASK_EVENTS = True
 
 def execR(cmd):
     # Runs command and returns output (unless an error is raised)
-    return run(cmd, check=True, stdout=PIPE, text=True).stdout
+    return run(cmd, check=True, stdout=PIPE, stderr=STDOUT, text=True).stdout
 
 # Regarding running R expressions:
 #   - Use 'cat(2+2)' to capture R output as a Celery result
