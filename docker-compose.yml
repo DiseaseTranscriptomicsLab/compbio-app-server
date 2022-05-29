@@ -1,12 +1,12 @@
-version: "3"
+version: "3.9"
 services:
   nginx:
     image: nginx
     container_name: nginx
+    restart: always
     ports:
       - 80:80
       - 443:443
-      - 8081:8080
     volumes:
       - ./nginx:/etc/nginx
       - /etc/ssl/imm:/certs:ro
@@ -19,11 +19,10 @@ services:
   shinyproxy:
     image: openanalytics/shinyproxy:2.6.0
     container_name: shinyproxy
-    restart: on-failure
+    restart: always
     user: root
     ports:
       - 8080:8080
-      - 9091:9090
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./shinyproxy/application.yml:/opt/shinyproxy/application.yml:ro
@@ -46,22 +45,20 @@ services:
     environment:
       - GF_SERVER_ROOT_URL=http://localhost/grafana/
       - GF_SERVER_SERVE_FROM_SUB_PATH=true
-      - GF_AUTH_ANONYMOUS_ENABLED=true
-      - GF_AUTH_ANONYMOUS_ORG_NAME=Main Org.
-      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
-      - GF_AUTH_ANONYMOUS_HIDE_VERSION=true
+      - GF_SECURITY_ADMIN_USER=${GRAPHANA_USER:-graphana}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAPHANA_PASSWORD:-graphana_pass}
 
   redis:
     image: redis:6-alpine
     container_name: redis
+    restart: always
     sysctls:
       - net.core.somaxconn=65535
-    ports:
-      - 6379:6379
 
   prometheus:
     image: prom/prometheus
     container_name: prometheus
+    restart: always
     volumes:
       - ./prometheus:/etc/prometheus:ro
       - prometheus-data:/prometheus
@@ -69,9 +66,10 @@ services:
       - 9090:9090
 
   celery-ctrap:
-    container_name: celery-ctrap
     build: ./celery
+    container_name: celery-ctrap
     command: celery -A tasks worker -c5 -l info -E -n ctrap
+    restart: always
     volumes:
       - ./celery:/celery:ro
       - ../apps/cTRAP/sessions:/data
@@ -79,9 +77,10 @@ services:
       - redis
 
   flower:
-    container_name: flower
     image: mher/flower
+    container_name: flower
     command: celery -A tasks flower --url_prefix=flower --persistent=True --db=/data/flower.db --state_save_interval=1000
+    restart: always
     volumes:
       - ./celery:/celery:ro
       - flower-data:/data
@@ -96,29 +95,30 @@ services:
       - redis
 
   rstudio-server:
-    container_name: rstudio-server
     build: ./rstudio-server
+    container_name: rstudio-server
     ports:
       - 8787:8787
     environment:
-      - PASSWORD=hello
+      - PASSWORD=${RSTUDIO_PASSWORD:-rstudio_pass}
     profiles:
       - dev
 
   postgres:
-    container_name: postgres
     image: postgres:12.8
+    container_name: postgres
     restart: always
     volumes:
       - postgres-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres_pass}
     ports:
       - 5432:5432
 
   clickhouse:
-    container_name: clickhouse
     image: yandex/clickhouse-server:21.7-alpine
+    container_name: clickhouse
     restart: always
     volumes:
       - clickhouse-data:/var/lib/clickhouse
@@ -130,8 +130,8 @@ services:
         hard: 262144
 
   plausible:
-    container_name: plausible
     image: plausible/analytics:v1.4.2
+    container_name: plausible
     restart: always
     command: sh -c "sleep 10 && /entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh db init-admin && /entrypoint.sh run"
     depends_on:
@@ -139,8 +139,14 @@ services:
       - clickhouse
     ports:
       - 8000:8000
-    env_file:
-      - ./plausible/plausible-conf.env
+    environment:
+      - ADMIN_USER_EMAIL=${PLAUSIBLE_EMAIL:-someone@email.com}
+      - ADMIN_USER_NAME=${PLAUSIBLE_USER:-plausible}
+      - ADMIN_USER_PWD=${PLAUSIBLE_PASSWORD:-plausible_pass}
+      - BASE_URL=https://compbio.imm.medicina.ulisboa.pt
+      - SECRET_KEY_BASE=RcqevpL5w8SzrSl0lhNy08KDPrtJE8LGXqX/uvozyC6Vap6+yq6w0q10DJICqz06+3PeDopOmQ8Wq6q3kFtaMw==
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/plausible
+      - CLICKHOUSE_DATABASE_URL=http://clickhouse:8123/clickhouse
 
 networks:
   default:

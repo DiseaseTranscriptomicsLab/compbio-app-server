@@ -1,3 +1,9 @@
 .DS_Store
-public/*
+*.env
+
+**.bak
+**.bkp
+
 shinyproxy/shiny-apps
+shinyproxy/application.yml
+nginx/nginx.conf

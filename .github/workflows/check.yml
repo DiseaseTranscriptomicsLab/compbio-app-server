@@ -1,0 +1,27 @@
+name: Check Docker Compose
+
+on:
+  push
+
+jobs:
+  build:
+    name: Check Docker Compose
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Setup project
+        run: ./setup.sh
+    
+      - name: Build the Docker Compose stack
+        run: docker compose up -d
+
+      - name: Sleep
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '60s'
+        
+      - name: Check running containers
+        run: docker ps

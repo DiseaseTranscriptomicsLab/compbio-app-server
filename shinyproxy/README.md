@@ -7,21 +7,26 @@ Docker images.
 
 ## Add new apps to ShinyProxy
 
-### 1. [Create a Docker image of your app][deploying]
+### 1. Create a Docker image of your app
 
-I suggest uploading your Docker image to DockerHub and then pulling it from the
-app server, e.g.:
+First of all, [create a Docker image of your app][deploying] in your own computer and
+check if the web app launches in your own computer before continuing.
+
+Afterwards, you need to move the Docker image to the app server. I suggest
+uploading your Docker image to DockerHub and tag it with its app version for
+future reference (e.g. `nunoagostinho/psichomics:1.18.6`). After being available
+in DockerHub, simply enter the app server via SSH and pull your Docker image
+there:
 
 ```bash
-docker pull nunoagostinho/psichomics:latest
+docker pull nunoagostinho/psichomics:1.18.6
 ```
 
 [deploying]: https://shinyproxy.io/documentation/deploying-apps/
 
 ### 2. Configure ShinyProxy in [`application.yml`][application.yml]
 
-Include a block of text related to your app at the end of the file, for
-instance:
+Include a block of text related to your app in the app section, for instance:
 
 ```yml
   - id: psichomics
@@ -52,7 +57,7 @@ Field               | Description
 After editing the file, restart ShinyProxy:
 
 ```bash
-docker-compose restart shinyproxy
+docker compose restart shinyproxy
 ```
 
 [application.yml]: application.yml
@@ -77,7 +82,7 @@ location = /appID { return 307 /app/appID; }
 After saving the file, restart Nginx to test out your new link:
 
 ```bash
-docker-compose restart nginx
+docker compose restart nginx
 ```
 
 [307]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/307
@@ -88,7 +93,7 @@ docker-compose restart nginx
 1. Pull the latest Docker image available to the app server
 2. Modify the `container-image` in [`application.yml`][application.yml] to
 include the latest version of the Docker image (if applicable)
-3. Restart ShinyProxy: `docker-compose restart shinyproxy`
+3. Restart ShinyProxy: `docker compose restart shinyproxy`
 
 ## Custom ShinyProxy HTML
 
