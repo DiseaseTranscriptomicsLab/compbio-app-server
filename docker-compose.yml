@@ -65,6 +65,33 @@ services:
     ports:
       - 9090:9090
 
+  node-exporter:
+    image: prom/node-exporter:v1.3.1
+    container_name: node-exporter
+    restart: always  
+    ports:
+      - 9100:9100
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+
+  nginx-exporter:
+    image: nginx/nginx-prometheus-exporter:0.10.0
+    container_name: nginx-exporter
+    restart: always
+    environment:
+      - SCRAPE_URI=http://nginx/stub_status
+    ports:
+      - 9113:9113
+    depends_on:
+      - nginx
+
   celery-ctrap:
     build: ./celery
     container_name: celery-ctrap
@@ -97,6 +124,7 @@ services:
   rstudio-server:
     build: ./rstudio-server
     container_name: rstudio-server
+    restart: always
     ports:
       - 8787:8787
     environment:
