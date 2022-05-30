@@ -8,7 +8,9 @@ certificates and to show a [public](nginx/public) folder
 - [Celery][] to run background tasks via a job queue system
   - [Flower][] to monitor Celery and to send jobs to Celery via its REST API
   - [Redis][] to serve as message broker for celery
-- [Prometheus][] and [Grafana][] to log and visualise ShinyProxy and Celery data
+- [Prometheus][] and [Grafana][] to log and visualise metrics from ShinyProxy, Celery, Nginx and the system
+  - [Node exporter][] to monitor system resource usage
+  - [Nginx Prometheus exporter][] to monitor Nginx
 - [Plausible][] analytics to gather traffic metrics of multiple websites
   - [Postgres][] database (Plausible's user data)
   - [Clickhouse][] database (Plausible's analytics)
@@ -21,6 +23,8 @@ certificates and to show a [public](nginx/public) folder
 [Flower]: https://flower.readthedocs.io/en/latest/
 [Redis]: https://redis.io
 [Prometheus]: https://prometheus.io
+[Node exporter]: https://github.com/prometheus/node_exporter
+[NGINX Prometheus exporter]: https://github.com/nginxinc/nginx-prometheus-exporter
 [RStudio Server]: https://www.rstudio.com/products/rstudio/
 [Nginx]: https://nginx.org
 [Plausible]: https://plausible.io
