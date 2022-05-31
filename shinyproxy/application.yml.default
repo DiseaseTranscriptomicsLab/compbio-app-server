@@ -28,15 +28,20 @@ proxy:
     container-volumes: [ "/srv/apps/psichomics/data:/root/Downloads" ]
     template-properties:
       startup-time: 20s
+      listed: true
   - id: voyAGEr
     description: Analysis of age-related gene expression changes in human
     container-image: arthurschneider/voyager
     container-network: "${proxy.docker.container-network}"
     container-volumes: [ "/srv/apps/voyager/data:/home/app/data" ]
+    template-properties:
+      listed: true
   - id: scStudio_LiMM
     container-image: genomeptimm/scstudio:1.3
     container-network: "${proxy.docker.container-network}"
     container-volumes: [ "/srv/apps/scStudio_LiMM/datasets:/home/app/datasets" ]
+    template-properties:
+      listed: true
   - id: cTRAP
     description: Identifying candidate causal perturbations from differential gene expression data
     container-image: nunoagostinho/ctrap:1.12.0
@@ -45,6 +50,7 @@ proxy:
     container-volumes: [ "/srv/apps/cTRAP/sessions:/data" ]
     template-properties:
       startup-time: 15s
+      listed: true
 
 logging:
   file:

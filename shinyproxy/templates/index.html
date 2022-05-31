@@ -27,7 +27,7 @@
       	<div class="row">
               <!--<div class="col-lg-3 col-md-4 col-sm-6" th:each="app: ${apps}" th:if="${ #lists.contains({'splicingSenescenceDashboard', 'betAS'}, app.id) }" style="min-height: 140px;">--> 
               <!-- Temporary size -->
-              <div class="col-lg-4 col-md-4 col-sm-4" th:each="app: ${apps}" th:if="${ !#lists.contains({'splicingSenescenceDashboard', 'betAS'}, app.id) }" style="min-height: 140px;">
+              <div class="col-lg-4 col-md-4 col-sm-4" th:each="app: ${apps}" th:if="${@thymeleaf.getTemplateProperty(app.id, 'listed', 'false') == 'true'}" style="min-height: 140px;">
                   <h1><a th:href="@{/app/}+${app.id}" th:text="${app.displayName == null} ? ${app.id} : ${app.displayName}"></a></h1>
                   <p th:text="${app.description}" ></p>
               </div>
