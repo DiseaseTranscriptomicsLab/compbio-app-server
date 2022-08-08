@@ -1,0 +1,33 @@
+.nav-aware { padding-top: 70px; }
+.nav-less-aware {padding-top: 30px; }
+/*
+footer {
+    margin: 50px 0;
+}
+*/
+h1 {
+    font-size: 32px;
+}
+
+.loading {
+    background: none;
+}
+
+.progress {
+    width: 350px;
+    margin: auto;
+}
+
+body{ 
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
+.wrapper{
+  flex:1;
+}
+footer{
+  padding:15px;
+  background:white;
+  color:white;
+}

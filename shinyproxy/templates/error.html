@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head lang="en">
+	<title th:text="${title}"></title>	
+	<div th:replace="fragments/head :: head"></div>
+</head>
+
+<body class="nav-less-aware">
+    <div th:replace="fragments/navbar :: navbar"></div>    
+    
+    <!-- 404 Page Not Found -->
+    <div id="error" class="container" th:if="${status == 404}">
+        <h1>Error <span th:text="${status}"></span></h1>
+        <span>The page you are looking for was not found...</span>
+    </div>
+
+    <!-- Default error message -->
+    <div id="error" class="container" th:if="${status != 404}">
+        <h1>Error <span th:text="${status}"></span></h1>
+        <span th:text="${message}"></span>
+        <hr>
+        <b>Stack Trace:</b>
+        <small><pre><span th:utext="${stackTrace}"></span></pre></small>
+    </div>
+</body>
+</html>

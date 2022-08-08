@@ -1,0 +1,55 @@
+# more info at https://shinyproxy.io/documentation/configuration
+
+spring.application.name: NMorais Lab - Bioinformatic Apps
+
+proxy:
+  title: NMorais Lab - Bioinformatic Apps
+  port: 8080
+  # bind-address: 127.0.0.1
+  hide-navbar: false
+  template-path: /opt/shinyproxy/templates
+  container-wait-time: 30000
+  container-log-path: /container-logs
+  usage-stats-url: micrometer
+
+  # app recovery enabled
+  stop-proxies-on-shutdown: false
+  recover-running-proxies: true
+
+  docker:
+    internal-networking: true
+    container-network: shiny-net
+  specs:
+  - id: psichomics
+    description: Alternative splicing quantification, visualisation and analysis
+    container-image: nunoagostinho/psichomics:1.20.0
+    container-cmd: ["R", "-e", "psichomics::psichomics(host='0.0.0.0', port=3838, shinyproxy=TRUE, cache='~/Downloads/AnnotationHub')"]
+    container-network: "${proxy.docker.container-network}"
+    container-volumes: [ "/srv/apps/psichomics/data:/root/Downloads" ]
+    template-properties:
+      startup-time: 20s
+      listed: true
+  - id: cTRAP
+    description: Identifying candidate causal perturbations from differential gene expression data
+    container-image: nunoagostinho/ctrap:1.12.0
+    container-network: "${proxy.docker.container-network}"
+    container-cmd: ["R", "-e", "cTRAP::cTRAP(host='0.0.0.0', port=3838, flowerURL='http://flower:5555/flower')"]
+    container-volumes: [ "/srv/apps/cTRAP/sessions:/data" ]
+    template-properties:
+      startup-time: 15s
+      listed: true
+
+logging:
+  file:
+    name: /log/shinyproxy.log
+
+management:
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+server:
+  secure-cookies: true
+  forward-headers-strategy: native
+  frame-options: sameorigin
