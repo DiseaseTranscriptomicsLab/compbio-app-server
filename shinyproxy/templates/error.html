@@ -3,8 +3,15 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head lang="en">
-	<title th:text="${title}"></title>	
-	<div th:replace="fragments/head :: head"></div>
+
+    <title th:text="${title}"></title>  
+
+    <!-- ------- Style, icons, etc ------- --> 
+    <div th:replace="fragments/head :: head"></div>
+     
+     <script async defer data-domain="compbio.imm.medicina.ulisboa.pt" data-api="/api/event" src="/js/plausible.js"></script>
+
+
 </head>
 
 <body class="nav-less-aware">
@@ -24,5 +31,7 @@
         <b>Stack Trace:</b>
         <small><pre><span th:utext="${stackTrace}"></span></pre></small>
     </div>
+
+    
 </body>
 </html>

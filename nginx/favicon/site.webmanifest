@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Disease Transcriptomics Lab | Bioinformatic Apps",
+    "short_name": "Disease Transcriptomics Lab | Bioinformatic Apps",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#e4e4e4",
-    "background_color": "#e4e4e4",
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
     "display": "standalone"
 }

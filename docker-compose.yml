@@ -17,7 +17,7 @@ services:
       - grafana
 
   shinyproxy:
-    image: openanalytics/shinyproxy:2.6.0
+    image: openanalytics/shinyproxy:2.6.1
     container_name: shinyproxy
     restart: always
     user: root
