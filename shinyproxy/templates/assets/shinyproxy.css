@@ -4,7 +4,7 @@
 footer {
     margin: 50px 0;
 }
-*/
+
 h1 {
     font-size: 32px;
 }
@@ -17,17 +17,361 @@ h1 {
     width: 350px;
     margin: auto;
 }
-
+ 
 body{ 
   display:flex;
   flex-direction:column;
   min-height:100vh;
-}
-.wrapper{
-  flex:1;
-}
-footer{
-  padding:15px;
-  background:white;
-  color:white;
-}
+} 
+*/
+
+  
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: Lexend Deca, sans-serif;
+        }
+ 
+        body,
+        html {
+            height: 100%;
+            color: #777;
+            line-height: 1.6;
+            background-color: white;
+            position: relative; 
+            scroll-padding-top: 1rem;
+        }
+
+         
+
+        .w3-wide {
+            letter-spacing: 10px;
+        }
+
+        .w3-hover-opacity {
+            cursor: pointer;
+        }
+
+        /* To change sizes according to page size */
+        .responsive {
+        width: 100%;
+        height: auto;
+        }
+ 
+        /* Footer background gradient */
+        footer {  
+            background-image: linear-gradient(45deg, grey, white);
+        }
+
+         /* Buttons */
+
+        .button {
+        display: inline-block;
+        padding: 10px 20px;
+        color: black;
+        border: 1px solid black; 
+        font-size: 16px;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: .3s;
+        background-color: rgba(255, 255, 255,0.1); 
+        }
+        .button:hover {
+                color: white;
+                background-color: black;
+        }
+
+        /* Center text */
+        .wrapper {
+            text-align: center; 
+            flex:1;
+        } 
+ 
+        /* APP cards */
+
+        :root {
+          --color: black;
+          --transition-time: 0.5s;
+        } 
+
+
+        .card { 
+          --bg-filter-opacity: 0.6; 
+           background-color: rgba(228, 228, 228, 0.7); 
+          height: 16em;
+          width: 13.5em;
+          font-size: 1.5em;
+          color: black;
+          border-radius: 0.2em;
+          padding: 1em;
+          padding-top: 1.5em;
+          margin: 0em; 
+          display: flex;
+          align-items: flex-start;
+          background-size: cover;
+          background-position: center;
+          box-shadow: 0 0 2.5em -2.3em black;
+          transition: all, var(--transition-time);
+          position: relative;
+          overflow: hidden; 
+          text-decoration: none;
+          place-self: center; 
+          display:flex;
+        }
+ 
+        .card:hover {
+          transform: rotate(0);
+        }
+
+        .card h1 {
+          margin: 0; 
+          line-height: 1.2em;  
+        }
+
+        .card p {
+          font-size: 0.6em;  
+          line-height: 2em;
+          font-family: "Lexend Deca";
+        }
+         
+        .card a {  
+           display: inline;
+          margin-right: 1em; 
+        }
+ 
+
+        .card .tags {
+          display: flex;
+        }
+
+        .card:before, .card:after {
+          content: '';
+          transform: scale(0);
+          transform-origin: top left;
+          border-radius: 50%;
+          position: absolute;
+          left: -50%;
+          top: -50%;
+          z-index: -5;
+          transition: all, var(--transition-time);
+          transition-timing-function: ease-in-out;
+        }
+
+        .card:before {
+          background: rgba(113, 213, 189, 0.4);
+          width: 250%;
+          height: 250%;
+        }
+
+        .card:after { 
+          background-color: rgba(113, 213, 189, 0.4);
+          width: 200%;
+          height: 200%;
+        }
+
+        .card:hover {
+          color: var(--color);
+        }
+
+        .card:hover:before, .card:hover:after {
+          transform: scale(1);
+        }
+ 
+
+        .cards_grid {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          gap: 1rem;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .missing_card{
+            --bg-filter-opacity: 0.6; 
+           height: 16em;
+          width: 13.5em;
+          font-size: 1.5em;
+          color: black;
+          border-radius: 0.2em;
+          padding: 1em;
+          padding-top: 1.5em;
+          margin: 0em; 
+          display: flex;
+          align-items: flex-start;
+          background-size: cover;
+          background-position: center;
+           transition: all, var(--transition-time);
+          position: relative;
+          overflow: hidden; 
+          text-decoration: none;
+          place-self: center; 
+          display:flex;
+          border-style: dashed;
+          border-width: 3px;
+          border-color: rgba(200, 200, 200); 
+
+
+        }
+        
+
+         /* Docker Images cards */
+ 
+
+        .smallercard { 
+          --bg-filter-opacity: 0.6; 
+           background-color: rgba(228, 228, 228, 0.7); 
+          height: 5em;
+          width: 12.5em;
+          font-size: 1.2em;
+          color: black;
+          border-radius: 0.2em;
+          padding: 1em;
+          padding-top: 0.2em;
+          margin: 0em; 
+          display: flex;
+          align-items: flex-start;
+          background-size: cover;
+          background-position: center;
+          box-shadow: 0 0 2.5em -2.3em black;
+          transition: all, var(--transition-time);
+          position: relative;
+          overflow: hidden; 
+           text-decoration: none;
+          place-self: center; 
+          display:flex;
+        }
+ 
+        .smallercard:hover {
+          transform: rotate(0);
+        }
+
+        .smallercard h5 {
+          margin: 0; 
+          line-height: 1em;  
+          font-size: 0.9em;
+        }
+
+        .smallercard p {
+          font-size: 0.6em;  
+          line-height: 1em;
+          font-family: "Lexend Deca";
+        }
+         
+        .smallercard a {  
+           display: inline;
+          margin-right: 1em; 
+        }
+ 
+
+        .smallercard .tags {
+          display: flex;
+        }
+
+        .smallercard:before, .smallercard:after {
+          content: '';
+          transform: scale(0);
+          transform-origin: top left;
+          border-radius: 50%;
+          position: absolute;
+          left: -50%;
+          top: -50%;
+          z-index: -5;
+          transition: all, var(--transition-time);
+          transition-timing-function: ease-in-out;
+        }
+
+        .smallercard:before {
+          background: rgba(200, 200, 200, 0.4);
+          width: 250%;
+          height: 250%;
+        }
+
+        .smallercard:after { 
+          background-color: rgba(200, 200, 200, 0.4);
+          width: 200%;
+          height: 200%;
+        }
+
+        .smallercard:hover {
+          color: var(--color);
+        }
+
+        .smallercard:hover:before, .smallercard:hover:after {
+          transform: scale(1);
+        }
+ 
+
+        .smallercard_grid {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          gap: 1rem;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        @media (min-width: 52em) {
+            .smallercard_grid{
+                grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+          }
+        }
+
+
+
+        
+        /* Change link color hover */
+
+        A:hover { COLOR: #006846; font-weight: none }
+
+        /* table */
+
+        table, th, td {
+          border:1px solid black;
+          padding: 5px;
+           border-collapse: collapse;
+          background-color: white;
+        }
+
+        table.center {
+          margin-left: auto; 
+          margin-right: auto;
+        }
+
+        /* Reveal effect scrolling */
+        /*
+        .reveal{
+          position: relative;
+          transform: translateY(150px);
+          opacity: 0;
+          transition: 1s all ease;
+        }
+
+        .reveal.active{
+          transform: translateY(0);
+          opacity: 1;
+        } */
+
+        /* header */
+
+        .header { 
+          text-align: center;
+           color: white; 
+          background-image: linear-gradient(45deg, rgba(113, 213, 189, 1),grey, grey,  white); 
+        } 
+        
+        .header {
+            padding: 50px;
+        }
+         
+        @media (min-width:1200px) {
+            .header {
+                padding: 80px 20%;
+            }
+        }
+ 
+ 
+
+

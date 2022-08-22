@@ -1,11 +1,27 @@
 <th:block th:fragment="head">
+ 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+
+    <!-- ------- Style ------- --> 
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+     <link rel="stylesheet" type="text/css" href="assets/shinyproxy.css"/>
+     <script type="text/javascript" src="assets/scripts.js"></script>
+   
+     <!-- ------- Fonts ------- -->  
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@200&family=Syne+Mono&display=swap" rel="stylesheet">
+
+     <!-- ------- Icons ------- --> 
+    <script src="https://kit.fontawesome.com/2c90bf8329.js" crossorigin="anonymous"></script>
+
+
 
     <link rel="stylesheet" media="screen" th:href="@{${bootstrapCss}}" />
     <link rel="stylesheet" media="screen" th:href="@{/css/default.css}"/>
     <link rel="stylesheet" media="screen" th:href="@{/assets/shinyproxy.css}"/>
 
-    <!-- favicons -->
+      
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -16,4 +32,6 @@
 
     <script th:src="@{${jqueryJs}}"></script>
     <script th:src="@{${bootstrapJs}}"></script>
+
+
 </th:block>
