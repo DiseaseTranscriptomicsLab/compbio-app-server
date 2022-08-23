@@ -285,13 +285,13 @@ body{
         }
 
         .smallercard:before {
-          background: rgba(200, 200, 200, 0.4);
+          background: rgba(200, 200, 200, 0.6);
           width: 250%;
           height: 250%;
         }
 
         .smallercard:after { 
-          background-color: rgba(200, 200, 200, 0.4);
+          background-color: rgba(200, 200, 200, 0.6);
           width: 200%;
           height: 200%;
         }

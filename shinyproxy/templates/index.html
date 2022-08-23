@@ -48,10 +48,10 @@
                 th:href="@{/}"  title="Home"> <i class="fa fa-house"></i></a>
 
             <a href="#apps" class="w3-bar-item w3-button w3-hide-small w3-left w3-hide-medium "  > Web Apps</a>
-            <a href="#developapps" class="w3-bar-item w3-button w3-hide-small w3-left w3-hide-medium "   > Apps in Development</a>
+            <a href="#developapps" class="w3-bar-item w3-button w3-hide-small w3-left w3-hide-medium "   > Other Apps in Development</a>
             <a href="#dockerimages" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-left"   > Docker Images </a>
 
-            <a href="mailto:nunoagostinho@medicina.ulisboa.pt?subject=NMorais app server" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-right" target="_blank"><i class="fa fa-envelope"></i> Suggestions / Report Issue </a>
+            <a href="mailto:imm-nmorais@medicina.ulisboa.pt?subject=NMorais app server" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-right" target="_blank"><i class="fa fa-envelope"></i> Suggestions / Report Issue </a>
             <a href="https://github.com/nuno-agostinho/compbio-app-server" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-right" target="_blank"><i class="fa fa-github"></i> GitHub </a>
              
         </div>
@@ -61,7 +61,7 @@
         <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large ">
 
             <a href="#apps" class="w3-bar-item w3-button w3-right" onclick="toggleFunction()"> Bioinformatic Web Apps </a>
-            <a href="#developapps" class="w3-bar-item w3-button w3-right" onclick="toggleFunction()"> Apps in Development </a>
+            <a href="#developapps" class="w3-bar-item w3-button w3-right" onclick="toggleFunction()"> Other Apps in Development </a>
             <a href="#dockerimages" class="w3-bar-item w3-button w3-right" onclick="toggleFunction()"> Docker Images </a>
 
             <a href="https://github.com/nuno-agostinho/compbio-app-server" class="w3-bar-item w3-button w3-right " onclick="toggleFunction()" target="_blank">GitHub</a>
@@ -76,7 +76,9 @@
     <div class="header" id="home">
     <img src="assets/img/logos/logolab_inv.png" alt=" "  class="responsive">  
                     <p class="wrapper" style="color:white; font-size: 1.1em;">
-                    The Disease Transcriptomics Lab at iMM, led by Nuno Barbosa-Morais, is a group of researchers applying computational approaches involving the analysis of high-throughput genomic and transcriptomic data aiming to understand how changes at the RNA-level increase proneness to diseases, namely cancer, neurodegenerative disorders and other ageing-related pathologies. Along the way, we develop some tools for assisting non-computational scientists in their analyses of transcriptomic data.   
+                    The Disease Transcriptomics Lab at iMM, led by Nuno Barbosa-Morais, is a group of researchers applying computational approaches involving the analysis of high-throughput genomic and transcriptomic data aiming to understand how changes at the RNA-level increase proneness to diseases, namely cancer, neurodegenerative disorders and other ageing-related pathologies. Along the way, we develop some tools for assisting non-computational scientists in their analyses of transcriptomic data.  
+
+
                     </p>
 
                 <div class="wrapper">
@@ -88,7 +90,7 @@
     <div class="w3-content w3-container w3-padding-24" id="mission">
     <h1 class="w3-center">Our Mission </h1>
     <p class="wrapper">
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? 
     </p>
     </div>
 
@@ -123,7 +125,7 @@
                  </p>
 
                  <!-- App Description -->
-                 <p style="font-family: Syne Mono;"> Alternative splicing quantification, visualisation and analysis  </p>
+                 <p style="font-family: Syne Mono;" > Alternative splicing quantification, visualisation and analysis  </p>
                  
                  <!-- App link -->
                  <div class="wrapper">
@@ -164,7 +166,7 @@
  
                  <!-- App link -->
                   <div class="wrapper">
-                        <a class="button" th:href="@{/app/}+scStudio_LiMM" >Go <i class="fa-solid fa-chevron-right"></i> </a>
+                        <a class="button" href="/app/scStudio_LiMM" >Go <i class="fa-solid fa-chevron-right"></i> </a>
                 </div>
             </div>
          </div>
@@ -191,7 +193,7 @@
 
                  <!-- App link -->
                 <div class="wrapper">
-                    <a class="button" th:href="@{/app/}+cTRAP" >Go <i class="fa-solid fa-chevron-right"></i> </a>
+                    <a class="button" href="/app/cTRAP" >Go <i class="fa-solid fa-chevron-right"></i> </a>
                  </div>
 
                  <!-- Examples of App Impact -->
@@ -224,7 +226,7 @@
 
                  <!-- App link -->
                 <div class="wrapper">
-                    <a class="button" th:href="@{/app/}+voyAGEr" > Go <i class="fa-solid fa-chevron-right"></i> </a>
+                    <a class="button" href="/app/voyAGEr" > Go <i class="fa-solid fa-chevron-right"></i> </a>
                  </div>
             </div>
          </div>
@@ -253,7 +255,7 @@
 
                  <!-- App link -->   
                 <div class="wrapper">
-                    <a class="button" th:href="@{/app/}+betAS" > Go <i class="fa-solid fa-chevron-right"></i> </a>
+                    <a class="button" href="/app/betAS" > Go <i class="fa-solid fa-chevron-right"></i> </a>
                  </div>
                 
                 <!-- Examples of App Impact -->
@@ -270,8 +272,8 @@
          </div>
 
          <!-- ------ missing card ------ -->
-         <div class="missing_card reveal">
-         </div>
+         <div class="missing_card reveal w3-hide-small   ">
+         </div> 
          
 
     </div>
@@ -281,12 +283,7 @@
     <div class="w3-content w3-container w3-padding-24 reveal" id="developapps">
     <h1 class="w3-center">Other Apps in Development</h1>
     <div class="cards_grid " >
-
-          <!-- ------ missing card ------ -->
-         <div class="missing_card reveal">
-             
-         </div> 
-
+ 
          <!-- ------ CREOLE ------ -->
          <div class="card ">
             <div>
@@ -307,10 +304,10 @@
             </div>
          </div>
 
-         <!-- ------ missing card ------ -->
+         <!-- ------ missing card ------ 
          <div class="missing_card reveal">
              
-         </div> 
+         </div> -->
 
          <!-- ------ missing card ------ 
          <div class="missing_card reveal">
@@ -327,11 +324,11 @@
         <p class="w3-center">
             At iMM, we have the opportunity of using Lobo, a multi-hundred node computer cluster. Lobo makes extensive use of Docker images, each a read-only templates that carries the instructions to build a Docker container. Containers are packaged applications that carry the necessary dependencies to allow running the program in every computer environment.
             
-            The following Docker images were developed by people in the Disease Transcriptomics team.
+            The following Docker images were developed by people in the Disease Transcriptomics team (in <span style="color: #18a986;"><strong>green</strong></span>, those under active maintenance).
         </p>
         <div class="smallercard_grid reveal" >
 
-              <div class="smallercard reveal">
+              <div class="smallercard reveal" style="background-color: rgba(113, 213, 189, 0.25);">
                 <div>
                     <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
                     <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/psichomics">psichomics</a>  </b></h5> 
@@ -339,7 +336,7 @@
                 </div>
              </div>
 
-              <div class="smallercard reveal">
+              <div class="smallercard reveal" style="background-color: rgba(113, 213, 189, 0.25);">
                 <div>
                     <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
                     <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/cTRAP">cTRAP</a>  </b></h5> 
@@ -347,55 +344,7 @@
                 </div>
              </div>
 
-              <div class="smallercard reveal">
-                <div>
-                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
-                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/big_matrix_corr">big_matrix_corr</a>  </b></h5> 
-                <p style="color:#a0a0a0;"> correlation | matrix | big-data </p>
-                </div>
-             </div>
-
-              <div class="smallercard reveal">
-                <div>
-                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
-                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/rmats4">rmats4</a>  </b></h5> 
-                <p style="color:#a0a0a0;"> alternative_splicing </p>
-                </div>
-             </div>
-
-              <div class="smallercard reveal">
-                <div>
-                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
-                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/rmats">rmats</a>  </b></h5> 
-                <p style="color:#a0a0a0;"> alternative_splicing </p>
-                </div>
-             </div>
-
-              <div class="smallercard reveal">
-                <div>
-                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
-                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/r-machine-learning">r-machine-learning</a>  </b></h5> 
-                <p style="color:#a0a0a0;"> R | programming | machine-learning </p>
-                </div>
-             </div>
-
-              <div class="smallercard reveal">
-                <div>
-                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
-                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/vast-tools">vast-tools</a>  </b></h5> 
-                <p style="color:#a0a0a0;"> alternative-splicing </p>
-                </div>
-             </div>
-
-              <div class="smallercard reveal">
-                <div>
-                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
-                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/multiqc">multiqc</a>  </b></h5> 
-                <p style="color:#a0a0a0;"> quality-control | RNA-seq </p>
-                </div>
-             </div>
-
-              <div class="smallercard reveal">
+             <div class="smallercard reveal">
                 <div>
                     <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
                     <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/bwa">bwa</a>  </b></h5> 
@@ -403,55 +352,8 @@
                 </div>
              </div>
 
-              <div class="smallercard reveal">
-                <div>
-                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
-                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/ciri-as">ciri-as</a>  </b></h5> 
-                <p style="color:#a0a0a0;"> alternative-splicing | circular-RNA </p>
-                </div>
-             </div>
 
-              <div class="smallercard reveal">
-                <div>
-                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
-                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/gdc-client">gdc-client</a>  </b></h5> 
-                <p style="color:#a0a0a0;"> GDC | data-transfer </p>
-                </div>
-             </div>
-
-              <div class="smallercard reveal">
-                <div>
-                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
-                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/sailfish">sailfish</a>  </b></h5> 
-                <p style="color:#a0a0a0;"> isoform-quantification </p>
-                </div>
-             </div>
-
-              <div class="smallercard reveal">
-                <div>
-                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
-                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/tophat">tophat</a>  </b></h5> 
-                <p style="color:#a0a0a0;"> splice-read | mapper </p>
-                </div>
-             </div>
-
-              <div class="smallercard reveal">
-                <div>
-                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
-                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/rsem">rsem</a>  </b></h5> 
-                <p style="color:#a0a0a0;"> transcript-quantification </p>
-                </div>
-             </div>
-
-              <div class="smallercard reveal">
-                <div>
-                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
-                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/parallel-fastq-dump">parallel-fastq-dump</a>  </b></h5> 
-                <p style="color:#a0a0a0;"> ncbi | download | fastq  </p>
-                </div>
-             </div>
-
-              <div class="smallercard reveal">
+            <div class="smallercard reveal">
                 <div>
                     <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
                     <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/whippet">whippet</a>  </b></h5> 
@@ -475,6 +377,104 @@
                 </div>
              </div>
 
+             <div class="smallercard reveal">
+                <div>
+                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
+                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/rmats4">rmats4</a>  </b></h5> 
+                <p style="color:#a0a0a0;"> alternative_splicing </p>
+                </div>
+             </div>
+
+              <div class="smallercard reveal">
+                <div>
+                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
+                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/rmats">rmats</a>  </b></h5> 
+                <p style="color:#a0a0a0;"> alternative_splicing </p>
+                </div>
+             </div>
+
+
+              <div class="smallercard reveal">
+                <div>
+                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
+                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/vast-tools">vast-tools</a>  </b></h5> 
+                <p style="color:#a0a0a0;"> alternative-splicing </p>
+                </div>
+             </div>
+
+
+              <div class="smallercard reveal">
+                <div>
+                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
+                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/ciri-as">ciri-as</a>  </b></h5> 
+                <p style="color:#a0a0a0;"> alternative-splicing | circular-RNA </p>
+                </div>
+             </div>
+
+              <div class="smallercard reveal">
+                <div>
+                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
+                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/big_matrix_corr">big_matrix_corr</a>  </b></h5> 
+                <p style="color:#a0a0a0;"> correlation | matrix | big-data </p>
+                </div>
+             </div>
+
+
+              <div class="smallercard reveal">
+                <div>
+                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
+                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/gdc-client">gdc-client</a>  </b></h5> 
+                <p style="color:#a0a0a0;"> GDC | data-transfer </p>
+                </div>
+             </div>
+
+
+              <div class="smallercard reveal">
+                <div>
+                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
+                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/sailfish">sailfish</a>  </b></h5> 
+                <p style="color:#a0a0a0;"> isoform-quantification </p>
+                </div>
+             </div>
+
+
+              <div class="smallercard reveal">
+                <div>
+                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
+                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/parallel-fastq-dump">parallel-fastq-dump</a>  </b></h5> 
+                <p style="color:#a0a0a0;"> ncbi | download | fastq  </p>
+                </div>
+             </div>
+
+              <div class="smallercard reveal">
+                <div>
+                    <p style="font-family: Syne Mono;"> genomeptimm/ </p>
+                    <h5><b> <a href = "https://hub.docker.com/repository/docker/genomeptimm/fastqc">fastqc</a>  </b></h5> 
+                <p style="color:#a0a0a0;"> quality-control | RNA-seq  </p>
+                </div>
+             </div>
+
+            <div class="smallercard reveal">
+                <div>
+                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
+                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/multiqc">multiqc</a>  </b></h5> 
+                <p style="color:#a0a0a0;"> quality-control | RNA-seq </p>
+                </div>
+             </div>
+
+              
+
+              
+
+              <div class="smallercard reveal">
+                <div>
+                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
+                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/r-machine-learning">r-machine-learning</a>  </b></h5> 
+                <p style="color:#a0a0a0;"> R | programming | machine-learning </p>
+                </div>
+             </div>
+
+
               <div class="smallercard reveal">
                 <div>
                     <p style="font-family: Syne Mono;"> genomeptimm/ </p>
@@ -483,13 +483,26 @@
                 </div>
              </div>
 
+
               <div class="smallercard reveal">
                 <div>
-                    <p style="font-family: Syne Mono;"> genomeptimm/ </p>
-                    <h5><b> <a href = "https://hub.docker.com/repository/docker/genomeptimm/fastqc">fastqc</a>  </b></h5> 
-                <p style="color:#a0a0a0;"> quality-control </p>
+                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
+                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/tophat">tophat</a>  </b></h5> 
+                <p style="color:#a0a0a0;"> splice-read | mapper </p>
                 </div>
              </div>
+
+              <div class="smallercard reveal">
+                <div>
+                    <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
+                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/rsem">rsem</a>  </b></h5> 
+                <p style="color:#a0a0a0;"> transcript-quantification </p>
+                </div>
+             </div>
+
+
+
+             
  
  
  
