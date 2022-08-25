@@ -1,20 +1,21 @@
 version: "3.9"
 services:
   nginx:
-    image: nginx:1.21
-    container_name: nginx
-    restart: always
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - ./nginx:/etc/nginx
-      - /etc/ssl/imm:/certs:ro
-      - ./nginx/public:/public:ro
-    depends_on:
-      - shinyproxy
-      - flower
-      - grafana
+     image: nginx:1.21
+     container_name: nginx
+     restart: always
+     user: root
+     ports:
+       - 80:80
+       - 443:443
+     volumes:
+       - ./nginx:/etc/nginx
+       - /etc/ssl/imm:/certs:ro
+       - ./nginx/public:/public:ro
+     depends_on:
+       - shinyproxy
+       - flower
+       - grafana
 
   shinyproxy:
     image: openanalytics/shinyproxy:2.6.1
