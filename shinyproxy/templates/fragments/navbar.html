@@ -1,25 +1,46 @@
 <!DOCTYPE html>
-<html 
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head lang="en"> 
+
+    <style> </style>
+
+    </head>
+
 <body>
-  <div th:fragment="navbar" id="navbar">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <!-- <img class="navbar-brand" th:src="${logo}" /> -->
-          <img class="navbar-brand" src="../assets/img/logos/imm_short.png" height="100px"/>
-          <a class="navbar-brand" th:href="@{/}" th:text="${title}"></a>
+
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top w3-black" th:fragment="navbar" id="navbar" style="background-color: black; color: white;">
+
+           <script type="text/javascript" src="../assets/scripts.js"></script>
+
+        <div class="w3-bar" id="myNavbar" >
+            <a class="w3-bar-item w3-button w3-hover-black w3-hide-large w3-right"
+                href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+                <i class="fa fa-bars"></i>
+            </a>
+             <a class="w3-bar-item w3-button w3-left"
+                th:href="@{/}"  title="Home" > <i class="fa fa-house"></i> </a> 
+            <a th:href="@{mailto:imm-nmorais@medicina.ulisboa.pt?subject={subject}{name}(subject='NMorais app server',name=${appTitle} ? (${' - ' + appTitle}) : '')}" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-right" target="_blank"><i class="fa fa-envelope"></i> Suggestions / Report Issue </a>
+            <a href="https://github.com/nuno-agostinho/compbio-app-server" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-right" target="_blank"><i class="fa fa-github"></i> GitHub </a>
         </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="https://github.com/nuno-agostinho/compbio-app-server" target="_blank">GitHub</a></li>
-            <li><a th:href="@{mailto:nunoagostinho@medicina.ulisboa.pt?subject={subject}{name}(subject='NMorais app server',name=${appTitle} ? (${' - ' + appTitle}) : '')}">Report Issue</a></li>
-          </ul>
+
+
+        <!-- Navbar on small screens -->
+        <div id="navDemo" class="w3-bar-block w3-hide w3-hide-large ">
+            <a href="https://github.com/nuno-agostinho/compbio-app-server" class="w3-bar-item w3-button w3-right " onclick="toggleFunction()" target="_blank"> <i class="fa fa-github"></i>  GitHub</a>
+
+            <a th:href="@{mailto:nunoagostinho@medicina.ulisboa.pt?subject={subject}{name}(subject='NMorais app server',name=${appTitle} ? (${' - ' + appTitle}) : '')}" class="w3-bar-item w3-button w3-right" onclick="toggleFunction()" target="_blank"> <i class="fa fa-envelope"></i> Suggestions / Report Issue </a>
+ 
+
         </div>
-      </div>
-    </nav>
-  </div>
+    </div>
+ 
+
+
+
+     
+
 </body>
+
 </html>

@@ -2,10 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
   <head lang="en">
+
+
     <title th:text="${appTitle}"></title>
+
     <div th:replace="fragments/head :: head"></div>
+
     <script async defer data-domain="compbio.imm.medicina.ulisboa.pt" data-api="/api/event" src="/js/plausible.js"></script>
+  
   </head>
+  
   <body>
     <div th:replace="fragments/navbar :: navbar"></div>
     <iframe id="shinyframe" th:src="${container}" width="100%" frameBorder="0"></iframe>
@@ -13,8 +19,8 @@
       <div class="loading-txt">
         Launching <span th:text="${appTitle}"></span>...
       </div>
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped active" role="progressbar"></div>
+      <div class="progress center-block"  style="width:400px;">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" ></div>
       </div>
     </div>
     <style th:inline="text">
