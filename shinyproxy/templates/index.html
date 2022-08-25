@@ -47,9 +47,9 @@
              <a class="w3-bar-item w3-button w3-left"
                 th:href="@{/}"  title="Home"> <i class="fa fa-house"></i></a>
 
-            <a href="#apps" class="w3-bar-item w3-button w3-hide-small w3-left w3-hide-medium "  > Web Apps</a>
-            <a href="#developapps" class="w3-bar-item w3-button w3-hide-small w3-left w3-hide-medium "   > Other Apps in Development</a>
-            <a href="#dockerimages" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-left"   > Docker Images </a>
+            <a href="#apps" class="w3-bar-item w3-button w3-hide-small w3-left w3-hide-medium"> Web Apps</a>
+            <a href="#developapps" class="w3-bar-item w3-button w3-hide-small w3-left w3-hide-medium"> Other Apps in Development</a>
+            <a href="#dockerimages" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-left"> Docker Images </a>
 
             <a href="mailto:imm-nmorais@medicina.ulisboa.pt?subject=NMorais app server" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-right" target="_blank"><i class="fa fa-envelope"></i> Suggestions / Report Issue </a>
             <a href="https://github.com/nuno-agostinho/compbio-app-server" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-right" target="_blank"><i class="fa fa-github"></i> GitHub </a>
@@ -66,7 +66,7 @@
 
             <a href="https://github.com/nuno-agostinho/compbio-app-server" class="w3-bar-item w3-button w3-right " onclick="toggleFunction()" target="_blank">GitHub</a>
 
-            <a href="mailto:nunoagostinho@medicina.ulisboa.pt?subject=NMorais app server" class="w3-bar-item w3-button w3-right" onclick="toggleFunction()" target="_blank"> Suggestions / Report Issue </a>
+            <a href="mailto:imm-nmorais@medicina.ulisboa.pt?subject=NMorais app server" class="w3-bar-item w3-button w3-right" onclick="toggleFunction()" target="_blank"> Suggestions / Report Issue </a>
  
 
         </div>
@@ -76,7 +76,9 @@
     <div class="header" id="home">
     <img src="assets/img/logos/logolab_inv.png" alt=" "  class="responsive">  
                     <p class="wrapper" style="color:white; font-size: 1.1em;">
-                    The Disease Transcriptomics Lab at iMM, led by Nuno Barbosa-Morais, is a group of researchers applying computational approaches involving the analysis of high-throughput genomic and transcriptomic data aiming to understand how changes at the RNA-level increase proneness to diseases, namely cancer, neurodegenerative disorders and other ageing-related pathologies. Along the way, we develop some tools for assisting non-computational scientists in their analyses of transcriptomic data.  
+                    <!-- The Disease Transcriptomics Lab at iMM, led by Nuno Barbosa-Morais, is a group of researchers applying computational approaches involving the analysis of high-throughput genomic and transcriptomic data aiming to understand how changes at the RNA-level increase proneness to diseases, namely cancer, neurodegenerative disorders and other ageing-related pathologies. Along the way, we develop some tools for assisting non-computational scientists in their analyses of transcriptomic data. -->
+
+                    We are a group of researchers applying computational approaches involving the analysis of high-throughput genomic and transcriptomic data aiming to understand how changes at the RNA-level increase proneness to diseases, namely cancer, neurodegenerative disorders and other ageing-related pathologies. Along the way, we develop some tools for assisting non-computational scientists in their analyses of transcriptomic data.
 
 
                     </p>
@@ -90,7 +92,7 @@
     <div class="w3-content w3-container w3-padding-24" id="mission">
     <h1 class="w3-center">Our Mission </h1>
     <p class="wrapper">
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? 
+        We develop applications for assisting non-computational scientists in their analyses of transcriptomic data. We aim to contribute towards bridging the conceptual and knowledge gaps between wet- and dry-lab researchers, by transparently sharing our approaches to data analysis in ways that make them understandable and therefore open for scrutiny by fellow scientists, also facilitating their reproducibility. Our bioinformatics tools empower colleagues to intelligibly perform similar analyses to ours, by visually assisting their decision-making process, avoiding “black boxes”.  We make our applications open source, user-friendly and freely available on our webserver, to democratise their use by the entire scientific community. We further increase their usability through the creation of accompanying tutorials and other training materials. 
     </p>
     </div>
 
@@ -133,12 +135,12 @@
                  </div>
                  
                  <!-- Examples of App Impact -->
-                 <p style="color: grey;">  
+                 <p style="color: grey; ">  
                      Impact (examples):
-                     <br>
-                     <a href="https://pubmed.ncbi.nlm.nih.gov/30661752/">Alternative Splicing</a> 
-                     <a href="https://pubmed.ncbi.nlm.nih.gov/32293332/">Cancer</a> 
-                     <a href="#">Neuro</a> 
+                      <a href="https://www.nature.com/articles/s41467-019-14020-5#Sec11" style="margin-left:1em">Neurobiology</a>
+                      <a href="https://www.sciencedirect.com/science/article/pii/S0092867418316246" >  Splicing Regulation</a> 
+                     <a href="https://elifesciences.org/articles/47678">Cancer</a> 
+                     
                   </p>
             </div>
          </div>
@@ -166,7 +168,7 @@
  
                  <!-- App link -->
                   <div class="wrapper">
-                        <a class="button" href="/app/scStudio_LiMM" >Go <i class="fa-solid fa-chevron-right"></i> </a>
+                        <a class="button" href="/app/scStudio" >Go <i class="fa-solid fa-chevron-right"></i> </a>
                 </div>
             </div>
          </div>
@@ -339,7 +341,7 @@
               <div class="smallercard reveal" style="background-color: rgba(113, 213, 189, 0.25);">
                 <div>
                     <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
-                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/cTRAP">cTRAP</a>  </b></h5> 
+                    <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/ctrap">cTRAP</a>  </b></h5> 
                 <p style="color:#a0a0a0;"> gene-expression | connectivity-map </p>
                 </div>
              </div>
