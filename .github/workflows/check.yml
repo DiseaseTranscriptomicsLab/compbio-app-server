@@ -36,6 +36,7 @@ jobs:
           ELECTRON_EXTRA_LAUNCH_ARGS: '--disable-gpu'
 
       - name: Store Cypress screenshots
+        when: on_failure
         uses: actions/upload-artifact@v3
         with:
           name: screenshots
