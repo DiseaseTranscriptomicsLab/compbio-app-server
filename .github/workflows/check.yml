@@ -30,8 +30,8 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           browser: chrome
-          env:
-            CYPRESS_VIDEO: false
+        env:
+          CYPRESS_VIDEO: false
 
       - name: Store Cypress screenshots
         uses: actions/upload-artifact@v3
