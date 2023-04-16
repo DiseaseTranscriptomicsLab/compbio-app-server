@@ -1,24 +1,29 @@
 describe('ShinyProxy', () => {
   it('main', () => {
     cy.visit('http://localhost')
+    cy.wait(2000)
     cy.screenshot()
   })
 
   it('psichomics', () => {
     cy.visit('http://localhost')
+    cy.wait(2000)
     cy.contains('psichomics').click()
     cy.screenshot()
     
     cy.visit('http://localhost/psichomics')
+    cy.wait(2000)
     cy.screenshot()
   })
   
   it('cTRAP', () => {
     cy.visit('http://localhost')
+    cy.wait(2000)
     cy.contains('cTRAP').click()
     cy.screenshot()
 
     cy.visit('http://localhost/cTRAP')
+    cy.wait(2000)
     cy.screenshot()
   })
 })
