@@ -19,9 +19,8 @@ jobs:
         run: docker compose up -d
 
       - name: Sleep
-        uses: jakejarvis/wait-action@master
-        with:
-          time: '60s'
+        run: sleep 60s
+        shell: bash
         
       - name: Check running containers
         run: docker ps
