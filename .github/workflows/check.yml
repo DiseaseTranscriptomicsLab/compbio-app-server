@@ -33,6 +33,7 @@ jobs:
           browser: firefox
         env:
           CYPRESS_VIDEO: false
+          CYPRESS_SUPPORTFILE: false
           ELECTRON_EXTRA_LAUNCH_ARGS: '--disable-gpu'
 
       - name: Store Cypress screenshots
