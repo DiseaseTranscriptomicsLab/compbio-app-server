@@ -14,7 +14,12 @@ jobs:
 
       - name: Setup project
         run: ./setup.sh
-    
+
+      - name: Cache
+        uses: satackey/action-docker-layer-caching@v0.0.11
+        # Ignore the failure of a step and avoid terminating the job.
+        continue-on-error: true
+
       - name: Build Docker Compose stack
         run: docker compose up -d
 
@@ -25,9 +30,19 @@ jobs:
       - name: Check running containers
         run: docker ps
 
+  cypress-run:
+    runs-on: ubuntu-latest
+    # Docker image with Cypress pre-installed
+    # https://github.com/cypress-io/cypress-docker-images/tree/master/included
+    container: cypress/included:3.8.3
+
+    steps:
+      - uses: actions/checkout@v1
+      - run: cypress run
       - name: Run Cypress unit tests
         uses: cypress-io/github-action@v5
         with:
+          install: false
           browser: chrome
         env:
           CYPRESS_VIDEO: false
