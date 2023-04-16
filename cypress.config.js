@@ -13,6 +13,6 @@ module.exports = defineConfig({
   // Command timeout overridden for E2E tests
   e2e: {
     defaultCommandTimeout: 10000,
-    basUrl: 'http://localhost:8080',
+    baseUrl: 'http://localhost:8080',
   },
 })
