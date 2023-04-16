@@ -34,6 +34,7 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           install: false
+          build: npm i -D cypress
           browser: chrome
         env:
           CYPRESS_VIDEO: false
