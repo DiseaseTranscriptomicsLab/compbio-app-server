@@ -1,3 +1,1 @@
-beforeEach(() => {
-    cy.log('I run before every test in every spec file!!!!!!')
-})
+// DO NOT DELETE THIS FILE: required for Cypress to run unit tests

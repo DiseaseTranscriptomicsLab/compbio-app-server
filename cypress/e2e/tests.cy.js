@@ -57,3 +57,10 @@ describe('Plausible', () => {
     cy.screenshot()
   })
 })
+
+describe('404', () => {
+  it('open', () => {
+    cy.request({url: '/404', failOnStatusCode: false}).its('status').should('equal', 404)
+    cy.visit('/404', {failOnStatusCode: false})
+  })
+})
