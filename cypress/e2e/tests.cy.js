@@ -48,7 +48,7 @@ describe('Prometheus', () => {
 
 describe('Plausible', () => {
   it('open', () => {
-    cy.visit('http://localhost:8000')
+    cy.visit('http://localhost:8000/login')
     cy.screenshot()
   })
 })
@@ -57,5 +57,6 @@ describe('404', () => {
   it('open', () => {
     cy.request({url: '/404', failOnStatusCode: false}).its('status').should('equal', 404)
     cy.visit('/404', {failOnStatusCode: false})
+    cy.screenshot()
   })
 })
