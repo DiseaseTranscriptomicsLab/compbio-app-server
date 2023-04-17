@@ -25,6 +25,9 @@ jobs:
       - name: Check running containers
         run: docker ps
 
+      - name: Docker Compose logs
+        run: docker compose logs --timestamps
+
       - name: Run Cypress unit tests
         uses: cypress-io/github-action@v5
         with:
