@@ -57,4 +57,8 @@ assertThat "plausible redirects to login" $plausible "302 Found"
 plausible_login=http://localhost:8000/login
 assertThat "plausible login is healthy" $plausible_login "200 OK"
 
-if [ "$FAIL" -gt 0 ]; then error "\nERROR: $FAIL test(s) failed"; exit 1; fi
+if [ "$FAIL" -gt 0 ]
+then
+    error "\nERROR: $FAIL test(s) failed"
+    exit 1
+fi
