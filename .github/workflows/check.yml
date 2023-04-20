@@ -19,7 +19,7 @@ jobs:
         run: docker compose up -d
 
       - name: Sleep
-        run: sleep 60s
+        run: sleep 10s
         shell: bash
         
       - name: Check running containers

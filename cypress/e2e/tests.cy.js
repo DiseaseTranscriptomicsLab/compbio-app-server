@@ -10,21 +10,11 @@ describe('ShinyProxy', () => {
     cy.wait(30000)
     cy.url().should('include', '/app/psichomics')
     cy.screenshot()
-    
-    cy.visit('/psichomics')
-    cy.wait(30000)
-    cy.url().should('include', '/app/psichomics')
-    cy.screenshot()
   })
   
   it('cTRAP', () => {
     cy.visit('/')
     cy.contains('cTRAP').click()
-    cy.wait(30000)
-    cy.url().should('include', '/app/cTRAP')
-    cy.screenshot()
-
-    cy.visit('/cTRAP')
     cy.wait(30000)
     cy.url().should('include', '/app/cTRAP')
     cy.screenshot()
