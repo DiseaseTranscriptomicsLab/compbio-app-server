@@ -9,19 +9,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
       - name: Setup project
-        run: ./setup.sh
-    
-      - name: Build the Docker Compose stack
+        run: ./setup-testing-mode.sh
+
+      - name: Build Docker Compose stack
         run: docker compose up -d
 
       - name: Sleep
-        uses: jakejarvis/wait-action@master
-        with:
-          time: '60s'
+        run: sleep 10s
+        shell: bash
         
       - name: Check running containers
         run: docker ps
+
+      - name: Run Cypress unit tests
+        uses: cypress-io/github-action@v5
+        with:
+          install: false
+          build: npm i -D cypress
+          browser: firefox
+        env:
+          CYPRESS_VIDEO: false
+          ELECTRON_EXTRA_LAUNCH_ARGS: '--disable-gpu'
+
+      - name: Store Cypress screenshots
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: screenshots
+          path: cypress/screenshots
+
+      - name: Docker Compose logs
+        run: docker compose logs
