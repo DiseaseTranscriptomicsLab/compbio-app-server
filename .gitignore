@@ -5,5 +5,4 @@
 **.bkp
 
 shinyproxy/shiny-apps
-shinyproxy/application.yml
 nginx/nginx.conf
