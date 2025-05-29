@@ -46,13 +46,16 @@ in your computer by going to the project folder and running:
 
 ```bash
 ./setup-testing-mode.sh            # setup files for testing and download Docker images
-docker compose --profile dev up -d # start services and RStudio in detached mode
+docker compose --profile dev up -d # start server in the `dev` profile and detached mode
 ```
 
 You can now visit http://localhost in your web browser. The services should be
 fully operational in about ~30 seconds. Specific services may only be accessible
 via their port, e.g. http://localhost:8000 for plausible and
 http://localhost:8787 for RStudio.
+
+> [!NOTE]
+> Some services are only available in the `dev` profile (RStudio).
 
 ### Production environment
 
@@ -87,11 +90,15 @@ docker compose up -d    # start services in detached mode
 
 You can now visit http://localhost in your web browser.
 
-> Some services are only available in the `dev` profile (RStudio). To
-> run this profile, type:
-> ```bash
-> docker compose --profile dev up -d
+> [!TIP]
+> If you are using a remote machine, [port forwarding][tunneling] allows to access
+> specific services in your browser. For instance, to access http://localhost:8000
+> (plausible) in your browser, you first need to connect to the machine like so:
 > ```
+> ssh -L 8000:localhost:8000 [server]
+> ```
+
+[tunneling]: https://en.wikipedia.org/wiki/Port_forwarding
 
 ## Next steps
 
