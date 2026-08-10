@@ -13,7 +13,7 @@ proxy:
   # bind-address: 127.0.0.1
   hide-navbar: false
   template-path: /opt/shinyproxy/templates
-  container-wait-time: 30000
+  container-wait-time: 100000
   container-log-path: /container-logs
   usage-stats-url: micrometer
 
@@ -36,7 +36,7 @@ proxy:
       listed: true
   - id: voyAGEr
     description: Analysis of age-related gene expression changes in human
-    container-image: diseasetranscriptomicslab/voyager:v2.0.2
+    container-image: diseasetranscriptomicslab/voyager:v2.0.3
     container-network: "${proxy.docker.container-network}"
     container-volumes: [ "/srv/apps/voyAGEr/data:/home/app/data" ]
     template-properties:
@@ -49,13 +49,73 @@ proxy:
     container-volumes: [ "/srv/apps/cTRAP/sessions:/data" ]
     template-properties:
       startup-time: 15s
-      listed: true 
+      listed: true
   - id: scStudio
     container-image: martabica/scstudio-home:1.2
     container-network: "${proxy.docker.container-network}"
     container-volumes: [ "/srv/apps/scStudio/tokens:/home/app/tokens", "/srv/apps/scStudio/public_datasets:/home/app/public_datasets", "/srv/apps/scStudio/session_data:/home/app/session_data" ]
     template-properties:
       listed: true
+  - id: scStudio_DATA
+    container-image: martabica/scstudio-selectdata:1.1
+    container-network: "${proxy.docker.container-network}"
+    container-volumes: [ "/srv/apps/scStudio/tokens:/home/app/tokens", "/srv/apps/scStudio/public_datasets:/home/app/public_datasets", "/srv/apps/scStudio/session_data:/home/app/session_data" ]
+    template-properties:
+      listed: true
+  - id: scStudio_QC
+    container-image: martabica/scstudio-qc:1.1
+    container-network: "${proxy.docker.container-network}"
+    container-volumes: [ "/srv/apps/scStudio/tokens:/home/app/tokens", "/srv/apps/scStudio/public_datasets:/home/app/public_datasets", "/srv/apps/scStudio/session_data:/home/app/session_data" ]
+    template-properties:
+      listed: true
+  - id: scStudio_NORM
+    container-image: martabica/scstudio-normalization:1.1
+    container-network: "${proxy.docker.container-network}"
+    container-volumes: [ "/srv/apps/scStudio/tokens:/home/app/tokens", "/srv/apps/scStudio/public_datasets:/home/app/public_datasets", "/srv/apps/scStudio/session_data:/home/app/session_data" ]
+    template-properties:
+      listed: true
+  - id: scStudio_DIMRED
+    container-image: martabica/scstudio-dimred:1.1
+    container-network: "${proxy.docker.container-network}"
+    container-volumes: [ "/srv/apps/scStudio/tokens:/home/app/tokens", "/srv/apps/scStudio/public_datasets:/home/app/public_datasets", "/srv/apps/scStudio/session_data:/home/app/session_data" ]
+    template-properties:
+      listed: true
+  - id: scStudio_CLUSTER
+    container-image: martabica/scstudio-clustering:1.1
+    container-network: "${proxy.docker.container-network}"
+    container-volumes: [ "/srv/apps/scStudio/tokens:/home/app/tokens", "/srv/apps/scStudio/public_datasets:/home/app/public_datasets", "/srv/apps/scStudio/session_data:/home/app/session_data" ]
+    template-properties:
+      listed: true
+  - id: scStudio_DEA
+    container-image: martabica/scstudio-dea:1.5
+    container-network: "${proxy.docker.container-network}"
+    container-volumes: [ "/srv/apps/scStudio/tokens:/home/app/tokens", "/srv/apps/scStudio/public_datasets:/home/app/public_datasets", "/srv/apps/scStudio/session_data:/home/app/session_data" ]
+    template-properties:
+      listed: true
+  - id: scStudio_GSEA
+    container-image: martabica/scstudio-fea:1.4
+    container-network: "${proxy.docker.container-network}"
+    container-volumes: [ "/srv/apps/scStudio/tokens:/home/app/tokens", "/srv/apps/scStudio/public_datasets:/home/app/public_datasets", "/srv/apps/scStudio/session_data:/home/app/session_data" ]
+    template-properties:
+      listed: true
+  - id: scStudio_FEATPLOT
+    container-image: martabica/scstudio-featureplots:1.1
+    container-network: "${proxy.docker.container-network}"
+    container-volumes: [ "/srv/apps/scStudio/tokens:/home/app/tokens", "/srv/apps/scStudio/public_datasets:/home/app/public_datasets", "/srv/apps/scStudio/session_data:/home/app/session_data" ]
+    template-properties:
+      listed: true
+  - id: scStudio_SETTINGS
+    container-image: martabica/scstudio-settings:1.1
+    container-network: "${proxy.docker.container-network}"
+    container-volumes: [ "/srv/apps/scStudio/tokens:/home/app/tokens", "/srv/apps/scStudio/public_datasets:/home/app/public_datasets", "/srv/apps/scStudio/session_data:/home/app/session_data" ]
+    template-properties:
+      listed: true
+  - id: scStudio_REPORT
+    container-image: martabica/scstudio-report:1.1
+    container-network: "${proxy.docker.container-network}"
+    container-volumes: [ "/srv/apps/scStudio/tokens:/home/app/tokens", "/srv/apps/scStudio/public_datasets:/home/app/public_datasets", "/srv/apps/scStudio/session_data:/home/app/session_data" ]
+    template-properties:
+      listed: true       
   - id: betAS
     description: Intuitive differential alternative splicing analysis
     container-image: marianaferreira/betas:v1.2.1
@@ -63,6 +123,21 @@ proxy:
     container-network: "${proxy.docker.container-network}"
     template-properties:
       startup-time: 5s
+      listed: true
+  - id: markeR
+    description: Toolkit for Evaluating Gene Sets as Phenotype Markers in R
+    container-image: diseasetranscriptomicslab/marker:shinyv0.99.7
+    container-network: "${proxy.docker.container-network}"
+    template-properties:
+      startup-time: 15s
+      listed: true
+  - id: CHARMdev
+    description: Comprehensive Hub for Alternative Regulatory Mapping
+    container-image: diseasetranscriptomicslab/charm:dev
+    container-network: "${proxy.docker.container-network}"
+    container-volumes: [ "/srv/apps/CHARM/data:/home/app/data" ]
+    template-properties:
+      startup-time: 60s
       listed: true
 
 logging:
