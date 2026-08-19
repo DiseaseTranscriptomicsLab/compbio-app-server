@@ -126,7 +126,7 @@ proxy:
       listed: true
   - id: markeR
     description: Toolkit for Evaluating Gene Sets as Phenotype Markers in R
-    container-image: diseasetranscriptomicslab/marker:shinyv0.99.7
+    container-image: diseasetranscriptomicslab/marker:shinyv0.99.8
     container-network: "${proxy.docker.container-network}"
     template-properties:
       startup-time: 15s
