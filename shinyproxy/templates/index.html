@@ -158,8 +158,8 @@
                     scStudio 
                 </b></h1> 
                 <!-- App Resources -->
-                <p> 
-                    <a href=""> </a>
+                <p>  
+                    <a href="https://www.biorxiv.org/content/10.1101/2025.04.17.649161v1">bioRxiv</a>
                  </p>
 
                 <!-- App Description -->
@@ -249,7 +249,7 @@
                 </b> </h1> 
                 <!-- App Resources -->
                 <p> 
-                	<a href="https://rnajournal.cshlp.org/content/30/4/337.abstract">Paper</a> 
+                    <a href="https://rnajournal.cshlp.org/content/30/4/337.abstract">Paper</a> 
                     <a href="https://github.com/DiseaseTranscriptomicsLab/betAS/tree/dev">GitHub</a> 
          
                      Tutorial
@@ -279,9 +279,50 @@
             </div>
          </div>
 
-         <!-- ------ missing card ------ -->
+
+
+
+         <!-- ------ markeR ------ -->
+         <div class="card reveal">
+            <div>
+                <h1> <b> 
+                    <!-- Icon App -->
+                    <i class="fa fa-pencil" aria-hidden="true"></i>  
+                    <!-- <img src="assets/img/markeR_icon.png" style="height: 1.2em;  vertical-align: -0.15em;">-->
+                    <!-- Name App --> 
+                    markeR 
+                </b></h1>  
+
+                <!-- App Resources -->
+                 <p>  
+                    <a href="https://doi.org/10.1093/nargab/lqag057">Paper</a> 
+                    <a href="https://doi.org/doi:10.18129/B9.bioc.markeR">Bioconductor</a> 
+                    <a href="https://github.com/DiseaseTranscriptomicsLab/markeR/">GitHub</a> 
+                    
+
+                    Tutorials:
+                        <a style="margin-right: 0em;" href="https://compbio.imm.medicina.ulisboa.pt/app_direct_i/markeR/_/tutorial/Tutorial_markeRShinyWebApp_shinyv0_99_7.pdf">[App]</a>
+                        <a href="https://diseasetranscriptomicslab.github.io/markeR/articles/markeR.html">[Package]</a>
+
+                 </p>
+
+                 <!-- App Description -->
+                 <p style="font-family: Syne Mono;"> Toolkit for evaluating gene sets as phenotype markers from gene expression data in R. </p>
+
+                 <!-- App link -->   
+                <div class="wrapper">
+                    <a class="button" href="/app/markeR" > Go <i class="fa-solid fa-chevron-right"></i> </a>
+                 </div>
+
+            </div>
+         </div>
+
+
+
+         <!-- ------ missing card ------  
          <div class="missing_card reveal w3-hide-small   ">
          </div> 
+         -->
          
 
     </div>
@@ -291,6 +332,26 @@
     <div class="w3-content w3-container w3-padding-24 reveal" id="developapps">
     <h1 class="w3-center">Other Apps in Development</h1>
     <div class="cards_grid " >
+
+                  <!-- ------ CHARM ------ -->
+         <div class="card ">
+            <div>
+                <h1> <b> 
+                    <!-- Icon App -->
+                    <i class="fa fa-diamond" aria-hidden="true"></i>
+                    <!-- Name App --> 
+                    CHARM 
+                </b></h1>  
+
+                <!-- App Resources -->
+                 <p>  
+                    <a href="https://github.com/DiseaseTranscriptomicsLab/CHARM/">GitHub</a> 
+                 </p>
+
+                 <!-- App Description -->
+                 <p style="font-family: Syne Mono;"> Platform for studying how RNA-binding proteins regulate expression, splicing, and RNA binding through ENCODE data.  </p>
+            </div>
+         </div>
  
          <!-- ------ CREOLE ------ -->
          <div class="card ">
@@ -308,39 +369,13 @@
                  </p>
 
                  <!-- App Description -->
-                 <p style="font-family: Syne Mono;"> Reference-free identification of open reading frames and encoded proteins from nanopore transcriptomic long reads  </p>
+                 <p style="font-family: Syne Mono;"> Reference-free identification of open reading frames and encoded proteins from nanopore transcriptomic long reads.  </p>
             </div>
          </div>
-
-         <!-- ------ markeR ------ -->
-         <div class="card ">
-            <div>
-                <h1> <b> 
-                    <!-- Icon App -->
-                    <i class="fa-solid fa-align-left"></i> 
-                    <!-- Name App --> 
-                    markeR 
-                </b></h1>  
-
-                <!-- App Resources -->
-                 <p>  
-                    <a href="https://github.com/DiseaseTranscriptomicsLab/markeR/">GitHub</a> 
-                 </p>
-
-                 <!-- App Description -->
-                 <p style="font-family: Syne Mono;"> Toolkit for Evaluating Gene Signatures as Phenotype Markers in R  </p>
-            </div>
-         </div>
-
-         <!-- ------ missing card ------ --> 
+         <!-- ------ missing card ------ -->
          <div class="missing_card reveal">
              
          </div> 
-
-         <!-- ------ missing card ------ 
-         <div class="missing_card reveal">
-             
-         </div> -->
 
     </div>
     </div>
@@ -350,12 +385,41 @@
     <div class="w3-content w3-container w3-padding-24 reveal" id="dockerimages">
         <h1 class="w3-center"> <i class="fa-brands fa-docker"></i> Docker Images</h1>
         <p class="w3-center">
-            At iMM, we have the opportunity of using Lobo, a multi-hundred node computer cluster. Lobo makes extensive use of Docker images, each a read-only templates that carries the instructions to build a Docker container. Containers are packaged applications that carry the necessary dependencies to allow running the program in every computer environment.
+            At GIMM, we have the opportunity of using Lobo, a multi-hundred node computer cluster. Lobo makes extensive use of Docker images, each a read-only templates that carries the instructions to build a Docker container. Containers are packaged applications that carry the necessary dependencies to allow running the program in every computer environment.
             
             The following Docker images were developed by people in the Disease Transcriptomics team (in <span style="color: #18a986;"><strong>green</strong></span>, those under active maintenance).
         </p>
         <div class="smallercard_grid reveal" >
 
+              <div class="smallercard reveal" style="background-color: rgba(113, 213, 189, 0.25);">
+                <div>
+                    <p style="font-family: Syne Mono;"> diseasetranscriptomicslab/ </p>
+                    <h5><b> <a href = "https://hub.docker.com/r/diseasetranscriptomicslab/charm/">charm</a>  </b></h5> 
+                <p style="color:#a0a0a0;"> RBPs | gene-expression | alternative splicing </p>
+                </div>
+             </div>
+              <div class="smallercard reveal" style="background-color: rgba(113, 213, 189, 0.25);">
+                <div>
+                    <p style="font-family: Syne Mono;"> diseasetranscriptomicslab/ </p>
+                    <h5><b> <a href = "https://hub.docker.com/r/diseasetranscriptomicslab/marker/">marker</a>  </b></h5> 
+                <p style="color:#a0a0a0;"> gene-expression | phenotypes </p>
+                </div>
+             </div>
+              <div class="smallercard reveal" style="background-color: rgba(113, 213, 189, 0.25);">
+                <div>
+                    <p style="font-family: Syne Mono;"> diseasetranscriptomicslab/ </p>
+                    <h5><b> <a href = "https://hub.docker.com/r/diseasetranscriptomicslab/voyager/">voyager</a>  </b></h5> 
+                <p style="color:#a0a0a0;"> ageing </p>
+                </div>
+             </div>
+              <div class="smallercard reveal" style="background-color: rgba(113, 213, 189, 0.25);">
+                <div>
+                    <p style="font-family: Syne Mono;"> marianaferreira/ </p>
+                    <h5><b> <a href = "https://hub.docker.com/r/marianaferreira/betas">betas</a>  </b></h5> 
+                <p style="color:#a0a0a0;"> alternative-splicing </p>
+                </div>
+             </div>
+ 
               <div class="smallercard reveal" style="background-color: rgba(113, 213, 189, 0.25);">
                 <div>
                     <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
@@ -409,7 +473,7 @@
                 <div>
                     <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
                     <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/rmats4">rmats4</a>  </b></h5> 
-                <p style="color:#a0a0a0;"> alternative_splicing </p>
+                <p style="color:#a0a0a0;"> alternative-splicing </p>
                 </div>
              </div>
 
@@ -417,7 +481,7 @@
                 <div>
                     <p style="font-family: Syne Mono;"> nunoagostinho/ </p>
                     <h5><b> <a href = "https://hub.docker.com/r/nunoagostinho/rmats">rmats</a>  </b></h5> 
-                <p style="color:#a0a0a0;"> alternative_splicing </p>
+                <p style="color:#a0a0a0;"> alternative-splicing </p>
                 </div>
              </div>
 
@@ -547,8 +611,11 @@
         
         <div class="w3-xlarge w3-section">
           <!-- LOGOS -->
-          <a href="https://imm.medicina.ulisboa.pt/pt-pt/" style="text-decoration: none;">
+          <!--<a href="https://imm.medicina.ulisboa.pt/pt-pt/" style="text-decoration: none;">
             <img target="_blank" src="assets/img/logos/imm.png" alt="" height="50px">
+          </a>-->
+          <a href="https://gimm.pt" style="text-decoration: none;">
+            <img target="_blank" src="assets/img/logos/gimm.png" alt="" height="80px">
           </a>
           <a href="https://www.embo.org/funding/fellowships-grants-and-career-support/young-investigator-programme/" style="text-decoration: none;">
             <img target="_blank" src="assets/img/logos/embo2.png" alt="" height="50px"> 
